@@ -23,7 +23,11 @@ interface LeadFormProps {
   className?: string;
 }
 
-export default function LeadForm({ source = "Website - Inquiry Form", defaultService = "AI Automation & WhatsApp Agents", className = "" }: LeadFormProps) {
+export default function LeadForm({ 
+  source = "Website - Inquiry Form", 
+  defaultService = "AI & WhatsApp (Receptionist / CSR)", 
+  className = "" 
+}: LeadFormProps) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -47,13 +51,15 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
     setRenderTime(Date.now());
   }, []);
 
+  // 22 Capabilities grouped from ethixweb.com
   const serviceOptions = [
-    "AI Automation & WhatsApp Agents",
-    "Next.js Web Applications & Portals",
-    "High-Performance Business Websites",
-    "D2C Commerce & ONDC Integration",
-    "Full-Funnel SEO & Paid Growth Ads",
-    "Dedicated Engineering Pod & 24/7 SLA",
+    "AI & WhatsApp (Receptionist / CSR)",
+    "Website (Redesign / Headless / Next.js)",
+    "Growth (SEO & Google / Meta Ads)",
+    "Data & Live Executive Dashboards",
+    "CRM Integration (Zoho / HubSpot / LeadSquared)",
+    "Accessibility & WCAG Compliance",
+    "24/7 Dedicated Support & Engineering Pod",
   ];
 
   const budgetOptions = [
@@ -77,6 +83,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
     "Hyderabad",
     "Pune",
     "Chennai",
+    "Ahmedabad",
     "Kolkata",
     "Other Indian City / Global",
   ];
@@ -165,7 +172,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
 
         <div className="bg-[#101420] border border-white/5 rounded-xl p-4 text-xs text-left max-w-md mx-auto space-y-2 mb-6 text-gray-300">
           <p className="flex items-center justify-between">
-            <span className="text-gray-400">Selected Service:</span>
+            <span className="text-gray-400">Selected Capability:</span>
             <strong className="text-white">{serviceCategory}</strong>
           </p>
           <p className="flex items-center justify-between">
@@ -211,14 +218,14 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
         <div>
           <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#FF9933] bg-[#FF9933]/10 px-2.5 py-0.5 rounded-full border border-[#FF9933]/20">
             <Sparkles className="w-3 h-3" />
-            India Project Enquiry
+            Project Scope &amp; Discovery
           </span>
           <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
-            Build With Ethixweb India
+            Build With Ethixweb
           </h3>
         </div>
         <div className="text-right hidden sm:block">
-          <p className="text-[11px] text-gray-400">Average First Response</p>
+          <p className="text-[11px] text-gray-400">Response SLA</p>
           <p className="text-xs font-semibold text-emerald-400">&lt; 4 Hours (IST)</p>
         </div>
       </div>
@@ -315,7 +322,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
           <div>
             <label className="block text-xs font-medium text-gray-300 mb-1.5 flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5 text-gray-400" />
-              <span>Required Capability *</span>
+              <span>Core Capability Needed *</span>
             </label>
             <select
               value={serviceCategory}
@@ -333,7 +340,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
           <div>
             <label className="block text-xs font-medium text-gray-300 mb-1.5 flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-gray-400" />
-              <span>Location / Tech Hub</span>
+              <span>Location / City</span>
             </label>
             <select
               value={city}
@@ -363,7 +370,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
                   type="button"
                   key={b.label}
                   onClick={() => setBudgetRangeINR(b.label)}
-                  className={`p-3 rounded-xl border text-left transition-all ${
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                     isSelected
                       ? "border-[#E30613] bg-[#E30613]/15 text-white ring-1 ring-[#E30613]"
                       : "border-white/10 bg-[#0B0D13] text-gray-300 hover:border-white/20 hover:bg-[#121520]"
@@ -381,7 +388,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
         <div>
           <label className="block text-xs font-medium text-gray-300 mb-1.5 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-gray-400" />
-            <span>Target Deployment Timeline</span>
+            <span>Launch Timeline</span>
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {timelineOptions.map((t) => (
@@ -389,7 +396,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
                 type="button"
                 key={t}
                 onClick={() => setTimeline(t)}
-                className={`py-2 px-3 rounded-lg border text-xs font-medium transition-all ${
+                className={`py-2 px-3 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                   timeline === t
                     ? "border-[#FF9933] bg-[#FF9933]/15 text-[#FF9933]"
                     : "border-white/10 bg-[#0B0D13] text-gray-400 hover:border-white/20"
@@ -409,7 +416,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
           <textarea
             required
             rows={3}
-            placeholder="Tell us what you're building, key challenges, integrations (e.g. WhatsApp, Razorpay, Zoho, CRM), or current bottlenecks..."
+            placeholder="Tell us what you're building, key challenges, current bottlenecks, or integrations (e.g. WhatsApp, Razorpay, Zoho, CRM)..."
             value={projectDetails}
             onChange={(e) => setProjectDetails(e.target.value)}
             className="w-full rounded-xl bg-[#0B0D13] border border-white/10 px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] outline-none transition-all resize-none"
@@ -426,7 +433,7 @@ export default function LeadForm({ source = "Website - Inquiry Form", defaultSer
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Encrypting &amp; Routing to India Tech Pod...</span>
+                <span>Encrypting &amp; Routing to Senior Engineering Desk...</span>
               </>
             ) : (
               <>

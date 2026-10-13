@@ -13,12 +13,14 @@ import {
   Award,
   Zap,
   TrendingUp,
-  Heart
+  Heart,
+  Check,
+  Star
 } from "lucide-react";
 
 export const metadata = {
-  title: "Our India Story | Ethixweb India",
-  description: "Learn how Ethixweb expanded from US digital operations to create India's most agile software engineering studio in Bengaluru, Mumbai, and Delhi-NCR.",
+  title: "About - Ethixweb India | Our Story & Philosophy",
+  description: "Built for founders tired of big agency theater. We're a tight-knit senior team that bridges Silicon Valley rigor with India's high-velocity innovation.",
 };
 
 export default function AboutPage() {
@@ -27,68 +29,75 @@ export default function AboutPage() {
       city: "Bengaluru",
       name: "Core Tech & AI Studio",
       address: "100ft Road, Indiranagar, Bengaluru, Karnataka 560038",
-      focus: "AI Agents, Next.js Full-Stack Engineering, Database Optimization & ONDC Rails",
-      color: "#E30613",
+      focus: "AI WhatsApp Agents, Next.js Full-Stack Engineering, High-Concurrency DBs",
+      tag: "India Tech Capital",
     },
     {
       city: "Mumbai",
       name: "BFSI & FinTech Hub",
       address: "One BKC, Bandra Kurla Complex, Mumbai, Maharashtra 400051",
-      focus: "Payment Integrations, Subscriptions, Underwriting Portals & Compliance",
-      color: "#FF9933",
+      focus: "Razorpay Checkout, Aadhaar e-KYC, Digital Lending Portals & Compliance",
+      tag: "Financial Center",
     },
     {
       city: "Delhi-NCR",
       name: "Enterprise & D2C Studio",
       address: "Cyber City, DLF Phase 2, Gurugram, Haryana 122002",
-      focus: "Headless Commerce, Brand Positioning, Programmatic SEO & Performance Ads",
-      color: "#10B981",
+      focus: "Headless E-commerce, ONDC Protocols, Programmatic SEO & Performance Ads",
+      tag: "Enterprise Hub",
+    },
+    {
+      city: "Wyoming & Seattle",
+      name: "Ethixweb USA LLC",
+      address: "Registered in Sheridan, WY & Serving Kent, WA",
+      focus: "North American Technology Operations & Global Security Architecture",
+      tag: "US Entity",
+    },
+  ];
+
+  const whatWeStandFor = [
+    {
+      icon: Target,
+      title: "Revenue Obsessed",
+      desc: "We measure success in booked jobs, qualified leads, and measurable revenue &mdash; not vanity impressions, page views, or design awards.",
+    },
+    {
+      icon: Users,
+      title: "Senior Team Only",
+      desc: "You talk directly to the people doing the work. No account managers passing messages. No juniors learning on your budget. No layers, no jargon.",
+    },
+    {
+      icon: Zap,
+      title: "Move Fast, Ship Clean",
+      desc: "Lean process, weekly iteration. We launch in weeks and optimize forever. Clean TypeScript, sub-second queries, and 90+ PageSpeed SLA.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Straight Talk & Full Transparency",
+      desc: "From the first call to launch day, you always know what is happening, why, and what is next. No black boxes, no surprise invoices.",
     },
   ];
 
   const milestones = [
     {
+      year: "2020",
+      title: "Ethixweb Inception",
+      desc: "Founded in the US to eliminate big agency theater and provide senior-led web development and digital operations for growing businesses.",
+    },
+    {
       year: "2022",
-      title: "Ethixweb Founded in the USA",
-      desc: "Launched in Wyoming and Seattle to provide hands-on digital engineering, AI automation, and CRM integrations for North American businesses.",
+      title: "Ethixweb USA LLC Incorporated",
+      desc: "Registered in Wyoming, establishing our US headquarters with operations serving Seattle, Kent, WA, and clients across North America.",
     },
     {
       year: "2024",
-      title: "The India Inception",
-      desc: "Recognized the rapid inflection in India's digital economy &mdash; UPI crossing 14 Billion monthly transactions and startups struggling with sluggish traditional agencies.",
-    },
-    {
-      year: "2025",
-      title: "Bengaluru & Mumbai Studios Open",
-      desc: "Established dedicated engineering pods in Indiranagar and BKC. Launched our WhatsApp Cloud AI agent framework and headless Next.js commerce stacks.",
+      title: "The India Expansion",
+      desc: "Identified the gap in India where high-growth startups were stuck with sluggish legacy IT agencies. Established our Bengaluru and Mumbai studios.",
     },
     {
       year: "2026",
-      title: "National Reach & ONDC Enablement",
-      desc: "Delivered over 40+ production systems with ₹450Cr+ GMV handled. Expanded to Gurugram enterprise hub with guaranteed 90+ PageSpeed SLA.",
-    },
-  ];
-
-  const corePillars = [
-    {
-      icon: Cpu,
-      title: "US Engineering Rigor &middot; Indian Velocity",
-      desc: "We bring Silicon Valley clean-code discipline (strict TypeScript, unit tests, sub-second queries) at the relentless execution speed demanded by India's startup founders.",
-    },
-    {
-      icon: Zap,
-      title: "Zero Bloat, Guaranteed Performance",
-      desc: "We reject bloated WordPress templates and slow page builders. Every line of code is hand-crafted in Next.js and Tailwind, ensuring 90+ PageSpeed on mobile 4G/5G.",
-    },
-    {
-      icon: Users,
-      title: "No Account Managers, Direct Engineers",
-      desc: "You talk directly with the tech lead writing your software. No game of telephone, no bureaucratic middle-management, and no miscommunicated specifications.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Frugal Innovation Elevated to Enterprise Scale",
-      desc: "We transform the Indian mindset of agility into disciplined system architecture. Built to withstand festive peak traffic, flash sales, and high concurrency.",
+      title: "High-Velocity India Scale",
+      desc: "Delivered 40+ systems across Bengaluru, Mumbai, and Delhi-NCR with ₹450Cr+ GMV handled. Integrated Meta Cloud WhatsApp AI agents and ONDC commerce rails.",
     },
   ];
 
@@ -99,95 +108,92 @@ export default function AboutPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#E30613]/12 rounded-full blur-[140px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center max-w-4xl mx-auto space-y-5">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FF9933]/30 bg-[#FF9933]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#FF9933]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#E30613]/40 bg-[#160E12] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#FF2B38]">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Our India Story</span>
+            <span>Since 2020 &middot; Senior-Led Team</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
-            Bridging Silicon Valley Precision With <br className="hidden sm:inline" />
+            Built For Businesses Tired Of <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E30613] via-[#FF2B38] to-[#FF9933]">
-              India&apos;s High-Velocity Scale
-            </span>.
+              Big Agency Theater.
+            </span>
           </h1>
 
           <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Why an American-born digital operations firm set up dedicated tech pods across Bengaluru, Mumbai, and Delhi-NCR to reinvent software delivery for Indian enterprises.
+            We started Ethixweb because we were tired of watching good businesses get mediocre results from agencies that overpromise and underdeliver.
           </p>
+
+          <div className="pt-2 flex flex-wrap justify-center gap-3 text-xs text-gray-400">
+            <span className="px-3 py-1.5 rounded-full bg-[#121520] border border-white/10">
+              100% Senior Led Delivery
+            </span>
+            <span className="px-3 py-1.5 rounded-full bg-[#121520] border border-white/10">
+              2-4 Weeks Launch Time
+            </span>
+            <span className="px-3 py-1.5 rounded-full bg-[#121520] border border-white/10">
+              US &amp; India Dual Operations
+            </span>
+          </div>
         </div>
       </section>
 
-      {/* Story Narrative Section */}
+      {/* Our Story Narrative */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6 text-sm text-gray-300 leading-relaxed">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E30613] flex items-center gap-2">
-                <Target className="w-4 h-4" /> The Genesis of Ethixweb India
+            <div className="lg:col-span-6 space-y-5 text-sm text-gray-300 leading-relaxed">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#E30613]">
+                Our Story
               </span>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-snug">
-                Why India Deserved A Better Digital Engineering Partner.
+                You work directly with the people building your project.
               </h2>
 
               <p>
-                Ethixweb started in the United States, managing mission-critical software, AI booking agents, and revenue pipelines for high-standard North American enterprises. But as our team watched India&apos;s digital transformation unfold &mdash; from the world-leading UPI payments revolution to the explosion of D2C brands &mdash; we noticed a glaring disconnect.
+                We&apos;re a tight-knit team of developers, designers, and strategists, each senior in their craft. When you work with Ethixweb, you work directly with the engineers creating your software.
               </p>
 
               <p>
-                Indian businesses were stuck between two painful extremes:
+                No account managers passing messages. No juniors learning on your budget. No endless discovery phases that result in wireframes and zero working code.
               </p>
 
-              <div className="space-y-3 pl-2 border-l-2 border-[#E30613]/50">
-                <p className="text-xs">
-                  <strong>1. Legacy IT Consultancies:</strong> Bloated body-shops billing exorbitant retainers while assigning junior trainees, delivering slow WordPress sites with 4-second load times on mobile.
+              <div className="p-4 rounded-2xl bg-[#0F121B] border border-white/5 space-y-2">
+                <p className="text-xs font-bold text-white uppercase tracking-wider text-[#FF9933]">
+                  The US-India Bridge:
                 </p>
-                <p className="text-xs">
-                  <strong>2. Unreliable Freelancer Collectives:</strong> Cheap upfront but plagued by missed deadlines, security vulnerabilities, and zero post-launch support when servers crash.
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  Through <strong>Ethixweb USA LLC</strong> (Wyoming, United States) and our dedicated technology studios in <strong>Bengaluru, Mumbai, and Delhi-NCR</strong>, we deliver enterprise-grade software with local responsiveness, GST billing, and real-time IST collaboration.
                 </p>
               </div>
-
-              <p>
-                We built <strong>Ethixweb India</strong> to bridge that gap. We offer the engineering discipline, security, and sub-second performance of a Silicon Valley lab, coupled with deep localized expertise in UPI checkout flows, WhatsApp conversational bots, and transparent INR milestone billing.
-              </p>
             </div>
 
+            {/* Mission & Vision Card */}
             <div className="lg:col-span-6 space-y-4">
-              <div className="glass-panel p-8 rounded-3xl border border-white/10 relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#E30613]/10 rounded-full blur-[60px]" />
-                <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                  <Award className="w-5 h-5 text-[#FF9933]" />
-                  What Makes Our India Edition Unique?
-                </h3>
-                <ul className="space-y-3 text-xs text-gray-300">
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong>Tailored for 4G/5G Indian Networks:</strong> Every site and portal is optimized to render in under 1.2 seconds even on tier-2/3 mobile data.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong>Native WhatsApp &amp; UPI Architecture:</strong> Seamless integration with Meta Cloud API for automated Hinglish chats and Razorpay 1-click checkout.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong>Local Compliance &amp; GST:</strong> Official Indian entity with GST-compliant invoicing, mutual NDA, and AWS Mumbai data residency.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong>Real-time IST Collaboration:</strong> Overlap with Indian business hours, instant Slack/WhatsApp updates, and Friday demo cadences.</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Stats Card */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 rounded-2xl bg-[#0C0F17] border border-white/5 text-center">
-                  <p className="text-2xl font-black text-white">40+ Ventured</p>
-                  <p className="text-[11px] text-gray-400 mt-1">Startups &amp; SMEs in India</p>
+              <div className="glass-panel p-8 rounded-3xl border border-white/10 space-y-6">
+                <div>
+                  <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-widest">
+                    Our Mission
+                  </span>
+                  <h3 className="text-xl font-bold text-white mt-1 mb-2">
+                    Turn marketing &amp; tech spend into measurable revenue.
+                  </h3>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    Every project we take on is judged the exact same way: did it move the needle on bookings, qualified leads, and revenue? We build websites and AI systems that earn their place in your budget.
+                  </p>
                 </div>
-                <div className="p-5 rounded-2xl bg-[#0C0F17] border border-white/5 text-center">
-                  <p className="text-2xl font-black text-emerald-400">90+ Score</p>
-                  <p className="text-[11px] text-gray-400 mt-1">PageSpeed Insights SLA</p>
+
+                <div className="pt-4 border-t border-white/10">
+                  <span className="text-xs font-mono text-[#FF9933] font-bold uppercase tracking-widest">
+                    Our Vision
+                  </span>
+                  <h3 className="text-xl font-bold text-white mt-1 mb-2">
+                    The senior team founders call first.
+                  </h3>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    We&apos;re building Ethixweb into the go-to engineering and growth partner for businesses &mdash; known for senior craftsmanship, straight talk, and results you can point to.
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,31 +201,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values & Pillars */}
+      {/* What We Stand For */}
       <section className="py-20 bg-[#06080D] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E30613] bg-[#E30613]/10 px-3 py-1 rounded-full border border-[#E30613]/20 mb-3">
-              <Target className="w-3.5 h-3.5" /> Our Operating Principles
+            <span className="text-xs font-bold uppercase tracking-wider text-[#E30613]">
+              Operating Values
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-              The Principles That Guide Our Engineering.
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-1">
+              What We Stand For.
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {corePillars.map((pillar, idx) => {
-              const Icon = pillar.icon;
+            {whatWeStandFor.map((w, idx) => {
+              const Icon = w.icon;
               return (
                 <div
                   key={idx}
                   className="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#E30613]/40 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#E30613]/15 border border-[#E30613]/30 flex items-center justify-center text-[#E30613] mb-4">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-11 h-11 rounded-xl bg-[#E30613]/15 border border-[#E30613]/30 flex items-center justify-center text-[#E30613] mb-4">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2">{pillar.title}</h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">{pillar.desc}</p>
+                  <h3 className="text-base font-bold text-white mb-2">{w.title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{w.desc}</p>
                 </div>
               );
             })}
@@ -227,43 +233,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* India Tech Hubs */}
+      {/* Physical Studios & Labs */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF9933] bg-[#FF9933]/10 px-3 py-1 rounded-full border border-[#FF9933]/20 mb-3">
-              <MapPin className="w-3.5 h-3.5" /> Presence Across Bharat
+            <span className="text-xs font-bold uppercase tracking-wider text-[#FF9933]">
+              Global Presence
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-              Our Physical Hubs &amp; Laboratories.
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-1">
+              Our Physical Studios &amp; Entity.
             </h2>
             <p className="text-sm text-gray-400 mt-2">
-              Deep roots in India&apos;s leading technology, financial, and industrial corridors.
+              Connected across the US and India through one unified technology operations layer.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {hubs.map((hub, idx) => (
               <div
                 key={idx}
-                className="glass-panel p-7 rounded-2xl border border-white/10 relative overflow-hidden"
+                className="glass-panel p-6 rounded-2xl border border-white/10 space-y-3"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-bold text-white flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-[#E30613]" />
-                    {hub.city}
-                  </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">
-                    Active Hub
-                  </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#FF9933]">{hub.tag}</span>
+                  <Building2 className="w-4 h-4 text-[#E30613]" />
                 </div>
-
-                <p className="text-xs font-semibold text-gray-200 mb-2">{hub.name}</p>
-                <p className="text-xs text-gray-400 leading-relaxed mb-4">{hub.address}</p>
-
-                <div className="pt-3 border-t border-white/10">
-                  <p className="text-[11px] font-bold uppercase text-gray-400 mb-1">Hub Specialization:</p>
-                  <p className="text-xs text-emerald-300">{hub.focus}</p>
+                <h3 className="text-base font-bold text-white">{hub.city}</h3>
+                <p className="text-xs text-gray-300 font-medium">{hub.name}</p>
+                <p className="text-[11px] text-gray-400 leading-relaxed">{hub.address}</p>
+                <div className="pt-2 border-t border-white/10 text-[10px] text-emerald-400 font-mono">
+                  {hub.focus}
                 </div>
               </div>
             ))}
@@ -271,15 +270,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline Milestones */}
+      {/* Milestones Timeline */}
       <section className="py-20 bg-[#06080D] border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 mb-3">
-              <TrendingUp className="w-3.5 h-3.5" /> Our Journey
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+              Milestones
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              From North America to India&apos;s Tech Frontier.
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+              The Journey of Ethixweb.
             </h2>
           </div>
 
@@ -305,7 +304,7 @@ export default function AboutPage() {
               href="/contact"
               className="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-xs font-bold text-white"
             >
-              <span>Partner With Ethixweb India</span>
+              <span>Work With Ethixweb</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

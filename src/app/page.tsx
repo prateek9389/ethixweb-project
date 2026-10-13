@@ -19,174 +19,196 @@ import {
   Layers,
   ArrowUpRight,
   TrendingUp,
-  Award
+  Award,
+  Clock,
+  Check,
+  Building2,
+  Wrench,
+  Activity,
+  Flame,
+  MessageSquare
 } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
 import CostCalculator from "@/components/CostCalculator";
 
 export const metadata = {
-  title: "Ethixweb India | AI Automation, Next.js Web Apps & Digital Operations",
-  description: "Redefining digital engineering for Indian businesses. We build AI WhatsApp agents, high-velocity Next.js web applications, ONDC commerce, and full-funnel digital operations with US-standard precision.",
+  title: "Ethixweb India - We run the tech. You run the business.",
+  description: "AI automation, websites, web applications, CRM integrations, SEO, ads, maintenance, and digital operations &mdash; built for Indian businesses that want measurable growth, not agency theater.",
 };
 
 export default function HomePage() {
   const stats = [
-    { value: "₹450Cr+", label: "Client Revenue Handled", sub: "across Indian commerce & fintech" },
-    { value: "1.1s", label: "Mobile LCP Load Time", sub: "benchmarked on Jio & Airtel networks" },
-    { value: "99.98%", label: "Cloud Uptime SLA", sub: "hosted in AWS ap-south-1 Mumbai" },
-    { value: "40+", label: "Indian Tech Pods Scaled", sub: "Bengaluru, Mumbai & Delhi-NCR" },
+    { value: "2-4 wks", label: "Typical Launch Time", sub: "Weeks, not quarters" },
+    { value: "100%", label: "Senior-Led Delivery", sub: "Direct engineers, zero middle-men" },
+    { value: "1.1s", label: "Mobile LCP Load Time", sub: "Benchmarked on Jio & Airtel" },
+    { value: "₹450Cr+", label: "Client Revenue Processed", sub: "Across Indian D2C & Tech" },
   ];
 
-  const services = [
+  // The 22 Capabilities grouped across Ethixweb's 6 official pillars
+  const serviceCategories = [
     {
-      icon: Bot,
-      title: "AI Agents & WhatsApp Cloud Ops",
-      desc: "Custom WhatsApp chatbots & AI voice agents fluent in English and Hinglish that qualify leads, answer FAQs, and book meetings 24/7.",
-      tag: "Meta Cloud API",
-      metrics: "+310% Lead Conversion",
-      href: "/services#ai-agents",
-    },
-    {
+      name: "Website",
+      count: "04 Services",
       icon: Cpu,
-      title: "High-Velocity Next.js Web Apps",
-      desc: "Custom portals, internal dashboards, and B2B SaaS applications engineered with TypeScript, Tailwind, and sub-second database queries.",
-      tag: "React 19 / Next.js",
-      metrics: "90+ PageSpeed Guaranteed",
-      href: "/services#web-apps",
+      summary: "Modern sites and headless foundations built around how your business sells.",
+      services: [
+        { name: "Website Redesign", desc: "A modern site built around how your business sells." },
+        { name: "Headless Architecture", desc: "Faster, more flexible foundation for future growth." },
+        { name: "Landing Pages", desc: "Purpose-built pages that convert campaign traffic." },
+        { name: "Maintenance & Security", desc: "Updates, monitoring, and patching after launch." },
+      ],
+      tag: "Next.js / Tailwind",
     },
     {
-      icon: ShoppingBag,
-      title: "D2C Commerce & ONDC Integration",
-      desc: "Headless e-commerce stores with instant 1-click Razorpay UPI checkout, automated shipping sync via Shiprocket, and ONDC buyer network hooks.",
-      tag: "E-Commerce",
-      metrics: "38% Lower Cart Drop-offs",
-      href: "/services#d2c-commerce",
+      name: "AI & WhatsApp",
+      count: "04 Services",
+      icon: Bot,
+      summary: "Chatbots and AI receptionists that qualify and route leads around the clock.",
+      services: [
+        { name: "Knowledge Chatbot", desc: "Fast answers from a fixed script or FAQ library." },
+        { name: "LLM Chatbot", desc: "Reasons over your real knowledge base, in your brand voice." },
+        { name: "AI Receptionist / CSR", desc: "Handles inquiries on WhatsApp & web 24/7." },
+        { name: "Human Handoff", desc: "A real person steps in when it actually matters." },
+      ],
+      tag: "Meta Cloud API",
     },
     {
+      name: "Growth",
+      count: "06 Services",
+      icon: TrendingUp,
+      summary: "SEO, Google & Meta ads, social, and email working as one coordinated engine.",
+      services: [
+        { name: "SEO", desc: "Technical fixes, content, and authority built over time." },
+        { name: "Google Ads + LSA", desc: "Campaigns built, tracked, and optimized weekly." },
+        { name: "Meta Ads", desc: "Facebook and Instagram, targeted and retargeted." },
+        { name: "Social + Reels", desc: "Strategy, content calendar, and creative production." },
+        { name: "Email Marketing", desc: "Campaigns, automation, and segmentation that convert." },
+        { name: "CRM Integration", desc: "Leads flow straight into Zoho, HubSpot, or LeadSquared." },
+      ],
+      tag: "Demand Generation",
+    },
+    {
+      name: "Data",
+      count: "03 Services",
       icon: BarChart3,
-      title: "Full-Funnel SEO & Paid Growth Ads",
-      desc: "Data-backed Google Ads & Meta campaigns integrated with CRM analytics to acquire high-intent B2B and consumer leads at predictable CAC.",
-      tag: "Growth Engine",
-      metrics: "4.8x Average ROAS",
-      href: "/services#seo-growth",
+      summary: "Live executive dashboards, analytics, and monthly reporting for every channel.",
+      services: [
+        { name: "Live Dashboard", desc: "Every channel's performance in one unified view." },
+        { name: "Full-Funnel Analytics", desc: "Website, ads, and lead tracking fully connected." },
+        { name: "Monthly Reporting", desc: "What happened, why, and what to do next." },
+      ],
+      tag: "Attribution",
     },
     {
+      name: "Accessibility",
+      count: "02 Services",
       icon: ShieldCheck,
-      title: "Cloud Infrastructure & DevOps",
-      desc: "Battle-tested cloud architecture on AWS Mumbai & Cloudflare with automated CI/CD pipelines, Docker containers, and bank-grade encryption.",
-      tag: "AWS ap-south-1",
-      metrics: "Zero Downtime Deploys",
-      href: "/services#cloud-ops",
+      summary: "Improvements and testing reviewed against recognized international standards.",
+      services: [
+        { name: "Accessibility Improvements", desc: "Contrast, navigation, and structure for everyone." },
+        { name: "Accessibility Testing", desc: "Reviewed against recognized WCAG accessibility standards." },
+      ],
+      tag: "Standards Compliance",
     },
     {
+      name: "Support",
+      count: "03 Services",
       icon: Headphones,
-      title: "24/7 Tech Operations & Dedicated Pods",
-      desc: "Your senior technology team on retainer. Instant bug fixes, feature sprints, uptime monitoring, and proactive security audits under 30-min SLA.",
-      tag: "Turnkey Retainer",
-      metrics: "Dedicated Tech Lead",
-      href: "/services#tech-pods",
+      summary: "A real senior team on technical support, content updates, and API maintenance.",
+      services: [
+        { name: "Technical Support", desc: "A real team reachable when something breaks." },
+        { name: "AI + Content Updates", desc: "Your chatbot's knowledge kept current monthly." },
+        { name: "API Maintenance", desc: "Every integration monitored and kept in sync." },
+      ],
+      tag: "24/7 Ops",
     },
   ];
 
-  const caseStudies = [
+  // The 4-Beat Operating Rhythm from Ethixweb
+  const operatingRhythm = [
     {
-      client: "FinSetu Solutions",
-      city: "Mumbai, Maharashtra",
-      category: "Fintech & NBFC Portal",
-      title: "Scaling Digital Loan Underwriting from 2,000 to 85,000 Monthly Borrowers",
-      desc: "Engineered a high-concurrency Next.js portal with Aadhaar e-KYC, DigiLocker verification, and instant UPI mandate setup. Reduced borrower drop-off from 48% to 14%.",
-      impact: [
-        { label: "Application Speed", value: "4.2x Faster" },
-        { label: "Monthly Borrowers", value: "85,000+" },
-        { label: "Uptime Rating", value: "99.99%" },
-      ],
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Razorpay Subscriptions", "AWS Mumbai"],
+      step: "Step 01",
+      title: "Audit",
+      desc: "We tear down your current site, ads, and tracking, and show you exactly where leads leak.",
+      badge: "Discovery",
     },
     {
-      client: "Vayu Mobility",
-      city: "Bengaluru, Karnataka",
-      category: "EV Logistics & Fleet Management",
-      title: "Real-Time Fleet Dispatch Dashboard Handling 45,000+ Daily EV Deliveries",
-      desc: "Replaced slow legacy software with a high-performance operational web app. Connected telemetry data from 3,200 electric two-wheelers across 6 Indian metro cities.",
-      impact: [
-        { label: "Dispatch Latency", value: "< 250ms" },
-        { label: "Fleet Utilization", value: "+28%" },
-        { label: "Daily Trips", value: "45,000+" },
-      ],
-      tech: ["React", "Node.js", "Redis", "WebSockets", "Mapbox India"],
+      step: "Step 02",
+      title: "Plan",
+      desc: "A prioritized roadmap with expected impact per item &mdash; you approve what we build, and why.",
+      badge: "Architecture",
     },
     {
-      client: "Sutra Living",
-      city: "Delhi-NCR / Mumbai",
-      category: "D2C Premium Lifestyle",
-      title: "Sub-Second Headless Storefront Delivering 42% Higher UPI Conversions",
-      desc: "Migrated a bloated CMS store to a headless architecture optimized for Indian mobile users on 4G networks. Implemented Razorpay Magic Checkout and automated WhatsApp shipping updates.",
-      impact: [
-        { label: "Mobile Page Load", value: "0.8s" },
-        { label: "UPI Checkout Conversion", value: "+42%" },
-        { label: "Cart Abandonment", value: "-31%" },
-      ],
-      tech: ["Next.js", "Tailwind CSS", "Shopify Headless", "WhatsApp API", "Razorpay"],
+      step: "Step 03",
+      title: "Build",
+      desc: "Senior hands ship the site, campaigns, and integrations in weeks, not quarters.",
+      badge: "Sprint",
+    },
+    {
+      step: "Step 04",
+      title: "Optimize",
+      desc: "Weekly iteration on real data: calls, bookings, and revenue &mdash; not vanity dashboards.",
+      badge: "Continuous",
     },
   ];
 
-  const comparisonPoints = [
+  // Indian Industries & Case Studies
+  const industries = [
     {
-      feature: "Engineering Talent Level",
-      traditionalAgency: "Junior trainees & outsourced freelancers",
-      inHouseHiring: "Lengthy 60-day hiring cycle in Bengaluru",
-      ethixweb: "Direct senior engineers & AI specialists with 5+ yrs experience",
+      title: "Home Services & Contractors",
+      sub: "You handle the jobs. We handle the tech.",
+      problem: "You spend thousands per lead, but miss 30% of incoming calls while on site. We build 24/7 AI WhatsApp responders that qualify customers and lock in bookings instantly.",
+      stat: "2,500+ Leads Generated",
+      linkText: "Explore Contractor Solutions",
     },
     {
-      feature: "Mobile Performance (LCP)",
-      traditionalAgency: "3.5s - 6.0s (Bloated templates, heavy plugins)",
-      inHouseHiring: "Variable based on internal developer skill",
-      ethixweb: "Guaranteed 90+ PageSpeed & sub-1.2s mobile loading",
+      title: "D2C Brands & Digital Commerce",
+      sub: "Sub-second checkout built for Bharat.",
+      problem: "Slow mobile storefronts on 4G cause 40%+ checkout drop-offs. We engineer headless Next.js stores with 1-click Razorpay UPI checkout, Shiprocket sync, and ONDC hooks.",
+      stat: "0.8s Mobile Load &middot; +38% UPI Conversion",
+      linkText: "Explore Commerce Solutions",
     },
     {
-      feature: "India-Specific Integrations",
-      traditionalAgency: "Basic Stripe / PayPal (often lacks UPI depth)",
-      inHouseHiring: "Requires custom engineering from scratch",
-      ethixweb: "Native WhatsApp Cloud API, Razorpay, Cashfree & ONDC pipelines",
+      title: "Fintech & B2B SaaS Startups",
+      sub: "High-concurrency portals with bank-grade security.",
+      problem: "Complex onboarding flows lose users during verification. We build custom reactive portals with Aadhaar e-KYC, DigiLocker hooks, and sub-second database transactions.",
+      stat: "85,000+ Monthly Users &middot; 99.99% Uptime",
+      linkText: "Explore Fintech Solutions",
     },
     {
-      feature: "SLA & Response Time",
-      traditionalAgency: "24-48 hours via support tickets",
-      inHouseHiring: "Limited to office hours; prone to turnover",
-      ethixweb: "< 30 mins incident response with direct Slack/WhatsApp channel",
-    },
-    {
-      feature: "Billing & Compliance",
-      traditionalAgency: "Opaque hourly billings with hidden scope creep",
-      inHouseHiring: "Fixed payroll + 20% benefits, hardware & tax liability",
-      ethixweb: "Transparent sprint milestones with GST-compliant tax invoicing",
+      title: "Healthcare & Multi-Clinic Networks",
+      sub: "24/7 WhatsApp consultation routing.",
+      problem: "Receptionists get overwhelmed with appointment scheduling across branches. Our AI triage bot books appointments into your CRM in English and Hinglish.",
+      stat: "+310% Consultation Bookings",
+      linkText: "Explore Healthcare Solutions",
     },
   ];
 
-  const testimonials = [
+  // Ethixweb Real Client Reviews (Verified Trustpilot & Indian Founders)
+  const clientReviews = [
+    {
+      quote: "I decided to give Ethixweb that chance and they have proven themselves! I have been with them 2 years and within that first year my business had doubled. The second year my business had doubled again. My website is easy to follow, has everything on it I asked for, it loads fast and it's easy to maintain. The folks at Ethixweb are very professional, schedule meetings via video when I need something fixed and are on top of it.",
+      author: "Ryan Taylor",
+      source: "Verified Client &middot; Trustpilot",
+      location: "Global Industrial Operations",
+    },
+    {
+      quote: "Amar is very thorough and quick to make changes on our website. Over the years that has been my biggest issue with web designers. Small changes can take way too long. Thankfully that is not the case here. Good service! Very happy customer!!",
+      author: "Leslie Whitehurst-Manners",
+      source: "Verified Client &middot; Trustpilot",
+      location: "Commercial Services",
+    },
+    {
+      quote: "I had Ethixweb create me a website not only did they do it extremely professional, but they did it extremely fast and it came out fabulous. They communicate great. I would highly recommend this company to create your next website. They are exceptional.",
+      author: "Clinton Mcculloch",
+      source: "Verified Client &middot; Trustpilot",
+      location: "Service Operations",
+    },
     {
       quote: "Ethixweb built our customer onboarding portal and WhatsApp AI agent in under 3 weeks. Our customer verification drop-off dropped by more than 35% within the first month. They understand Indian tech nuances like UPI and WhatsApp better than anyone.",
       author: "Aditya Deshmukh",
-      title: "Co-Founder & VP Product",
-      company: "FinBridge Solutions (Bengaluru)",
-      location: "Bengaluru",
-      rating: 5,
-    },
-    {
-      quote: "Most agencies in Mumbai either gave us cookie-cutter WordPress themes or promised the moon with 6-month timelines. Ethixweb gave us a dedicated Next.js engineering pod that shipped production code every Friday. Our PageSpeed went from 41 to 96.",
-      author: "Pooja Singhania",
-      title: "Director of Digital Strategy",
-      company: "Kavach Enterprises",
-      location: "Mumbai",
-      rating: 5,
-    },
-    {
-      quote: "Ethixweb has proven themselves again and again. Our website is easy to follow, loads blisteringly fast, and handles our peak festive sale traffic without a hiccup. The folks at Ethixweb are deeply professional and always on top of communication.",
-      author: "Ryan Taylor",
-      title: "Verified Global Client",
-      company: "Taylor Industrial Operations",
-      location: "Global Partner",
-      rating: 5,
+      source: "VP Product &middot; FinBridge Solutions",
+      location: "Bengaluru, Karnataka",
     },
   ];
 
@@ -194,46 +216,48 @@ export default function HomePage() {
     <div className="relative pt-24 sm:pt-28 pb-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-8 pb-16 sm:pb-24">
-        {/* Ambient Glows */}
+        {/* Glows */}
         <div className="hero-glow absolute inset-0 pointer-events-none" />
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#E30613]/12 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-40 right-10 w-96 h-96 bg-[#FF9933]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-[#E30613]/12 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            {/* Super Header Tag */}
+            {/* Super Tag */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#E30613]/40 bg-[#160E12] px-4 py-1.5 shadow-lg shadow-[#E30613]/10">
               <span className="flex h-2 w-2 rounded-full bg-[#E30613] animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-wider text-white">
-                Engineered for India &middot; Built for Global Scale
+                Ethixweb India Edition
               </span>
-              <span className="text-xs text-gray-400">|</span>
+              <span className="text-xs text-gray-500">|</span>
               <span className="text-xs font-semibold text-[#FF9933]">Bengaluru &middot; Mumbai &middot; Delhi-NCR</span>
             </div>
 
-            {/* Main Headline */}
+            {/* Ethixweb Signature Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08]">
-              High-Velocity <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E30613] via-[#FF2B38] to-[#FF9933]">AI &amp; Web Systems</span> For Indian Enterprises.
+              We run the tech. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E30613] via-[#FF2B38] to-[#FF9933]">
+                You run the business.
+              </span>
             </h1>
 
-            {/* Subtitle */}
+            {/* Official Positioning Description */}
             <p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              We replace bloated agencies with dedicated, senior engineering pods. From WhatsApp AI agents and Next.js platforms to sub-second UPI checkout funnels &mdash; we run the tech so you can run the business.
+              We manage your digital operation &mdash; from AI WhatsApp booking agents and CRM integrations to Next.js web applications, SEO, ads, and 24/7 cloud support for Indian businesses.
             </p>
 
-            {/* Hero CTAs */}
+            {/* CTAs */}
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
                 className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-all shadow-xl shadow-[#E30613]/30"
               >
                 <Calendar className="w-4 h-4" />
-                <span>Start Project Discovery (IST)</span>
+                <span>Start a Project (IST Discovery)</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <a
-                href="https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team!%20I%20would%20like%20to%20discuss%20our%20tech%20requirements."
+                href="https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team!%20I%20would%20like%20to%20discuss%20our%20tech%20operations."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-4 text-sm font-bold text-emerald-400 hover:bg-emerald-500/20 transition-all"
@@ -243,24 +267,24 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Trust Metrics Pill */}
+            {/* Core Values Tagline */}
             <div className="pt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#E30613]" />
-                <span>PageSpeed 90+ SLA Guaranteed</span>
+                <span>No Account Managers &middot; Direct Senior Engineers</span>
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Full GST Invoicing &amp; Mutual NDA</span>
+                <span>Weekly Shipping Cadence &middot; 2-4 Week Launches</span>
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#FF9933]" />
-                <span>Zero Lock-in Engineering Pods</span>
+                <span>Revenue Obsessed &middot; GST Invoicing</span>
               </span>
             </div>
           </div>
 
-          {/* Key Impact Stats Bar */}
+          {/* Key Metrics Bar */}
           <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-6 rounded-3xl glass-panel border border-white/10 shadow-2xl">
             {stats.map((stat, idx) => (
               <div
@@ -283,68 +307,108 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-[#06070A] border-y border-white/5 relative">
+      {/* Global Operations Network Section (From Ethixweb.com) */}
+      <section className="py-14 bg-[#090B10] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div className="max-w-2xl">
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#E30613] font-bold">
+                Global Operations Network
+              </span>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">
+                Seattle, Wyoming, New York, London &amp; India Stay Connected
+              </h2>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                One responsive digital operations layer. Whether you need late-night US support or high-velocity development during IST business hours, our senior teams bridge both worlds.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 text-xs">
+              <div className="px-3.5 py-2 rounded-xl bg-[#141824] border border-white/10 text-gray-200">
+                <span className="text-gray-400">US Entity:</span> <strong>Ethixweb USA LLC (Wyoming)</strong>
+              </div>
+              <div className="px-3.5 py-2 rounded-xl bg-[#141824] border border-white/10 text-gray-200">
+                <span className="text-gray-400">India Hubs:</span> <strong>Bengaluru &middot; Mumbai &middot; Delhi</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full 22 Services Catalog Across 6 Pillars (From Ethixweb.com) */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="max-w-3xl">
               <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E30613] bg-[#E30613]/10 px-3 py-1 rounded-full border border-[#E30613]/20 mb-3">
-                <Zap className="w-3.5 h-3.5" /> Full-Stack India Capabilities
+                <Layers className="w-3.5 h-3.5" /> Full Service Catalog
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-                Engineering Solutions Built For <span className="text-[#E30613]">India&apos;s Scale</span>.
+                22 Services Across 6 Categories. <br />
+                <span className="text-[#E30613]">Run By One Dedicated Team.</span>
               </h2>
               <p className="text-sm sm:text-base text-gray-400 mt-3 leading-relaxed">
-                From high-speed Next.js portals and AI WhatsApp bots to vernacular SEO &amp; ONDC rails, every capability is tuned for Indian consumer behavior and cloud performance.
+                From website builds to AI WhatsApp receptionists, ad campaigns, live reporting, and 24/7 support &mdash; stop stitching together five disconnected vendors.
               </p>
             </div>
 
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#FF9933] hover:text-white transition-colors group"
+              className="btn-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white shrink-0"
             >
-              <span>Explore all 22 detailed capabilities</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <span>See Full Service Matrix</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((svc, i) => {
-              const Icon = svc.icon;
+            {serviceCategories.map((cat, i) => {
+              const Icon = cat.icon;
               return (
                 <div
                   key={i}
-                  className="glass-panel card-glow-hover rounded-2xl p-7 flex flex-col justify-between border border-white/10 group relative"
+                  className="glass-panel card-glow-hover rounded-3xl p-7 flex flex-col justify-between border border-white/10 group relative"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-[#E30613]/15 border border-[#E30613]/30 flex items-center justify-center text-[#E30613] group-hover:bg-[#E30613] group-hover:text-white transition-all duration-300">
-                        <Icon className="w-6 h-6" />
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-11 h-11 rounded-xl bg-[#E30613]/15 border border-[#E30613]/30 flex items-center justify-center text-[#E30613] group-hover:bg-[#E30613] group-hover:text-white transition-all duration-300">
+                        <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-[#161A26] border border-white/10 text-gray-400">
-                        {svc.tag}
+                        {cat.count}
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#E30613] transition-colors">
-                      {svc.title}
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-[#E30613] transition-colors">
+                      {cat.name}
                     </h3>
 
-                    <p className="text-xs text-gray-400 leading-relaxed mb-6">
-                      {svc.desc}
+                    <p className="text-xs text-gray-400 mb-5 leading-relaxed">
+                      {cat.summary}
                     </p>
+
+                    <div className="space-y-2 pt-1 border-t border-white/5">
+                      {cat.services.map((s, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-gray-200">{s.name}:</strong>{" "}
+                            <span className="text-gray-400 text-[11px]">{s.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1">
-                      <TrendingUp className="w-3.5 h-3.5" />
-                      {svc.metrics}
+                  <div className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-[#FF9933]">
+                      {cat.tag}
                     </span>
                     <Link
-                      href={svc.href}
-                      className="text-xs text-gray-400 hover:text-white flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                      href="/services"
+                      className="text-xs text-gray-400 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                     >
-                      <span>Explore</span>
+                      <span>Explore details</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -355,199 +419,101 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4-Stage Agile Delivery Process */}
-      <section className="py-20 relative overflow-hidden">
+      {/* The 4-Beat Operating Rhythm (From Ethixweb.com) */}
+      <section className="py-20 bg-[#06070B] border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF9933] bg-[#FF9933]/10 px-3 py-1 rounded-full border border-[#FF9933]/20 mb-3">
-              <Layers className="w-3.5 h-3.5" /> The Ethixweb Protocol
+              <Activity className="w-3.5 h-3.5" /> How An Engagement Runs
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-              How We Ship Production Systems In Sprints.
+              The 4-Beat Operating Rhythm.
             </h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3">
-              No endless discovery meetings or bureaucratic red tape. We operate on a crisp 4-stage engineering sprint model with weekly working demos.
+              Every service plugs into the same disciplined four-step rhythm, so you always know what happens next.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                step: "01",
-                title: "Blueprint & Architecture",
-                duration: "Days 1 - 3",
-                desc: "We analyze user flows, database models, API integrations (Razorpay, WhatsApp, CRM), and draft the technical specification.",
-              },
-              {
-                step: "02",
-                title: "Rapid Prototype Sprint",
-                duration: "Days 4 - 10",
-                desc: "Interactive UI/UX in Figma and Next.js sandbox. You test and click through the real interface on mobile before we build the backend.",
-              },
-              {
-                step: "03",
-                title: "Full-Stack Engineering",
-                duration: "Days 11 - 24",
-                desc: "Clean TypeScript code, API endpoints, database schemas with row-level security, anti-spam protections, and automated unit tests.",
-              },
-              {
-                step: "04",
-                title: "Launch & 24/7 Operations",
-                duration: "Continuous",
-                desc: "Zero-downtime deployment on AWS Mumbai, PageSpeed 90+ audit, analytics instrumentation, and ongoing monitoring pod.",
-              },
-            ].map((p, idx) => (
+            {operatingRhythm.map((r, idx) => (
               <div
                 key={idx}
-                className="glass-panel p-6 rounded-2xl border border-white/10 relative hover:border-[#E30613]/40 transition-colors"
+                className="glass-panel p-6 rounded-2xl border border-white/10 relative hover:border-[#E30613]/50 transition-colors"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-black text-[#E30613] font-mono">
-                    {p.step}
+                  <span className="text-xl font-black text-[#E30613] font-mono">
+                    {r.step}
                   </span>
                   <span className="text-[10px] font-semibold text-[#FF9933] bg-[#FF9933]/10 border border-[#FF9933]/25 px-2 py-0.5 rounded-full">
-                    {p.duration}
+                    {r.badge}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{p.title}</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">{p.desc}</p>
+                <h3 className="text-base font-bold text-white mb-2">{r.title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{r.desc}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 p-6 rounded-3xl glass-panel border border-white/10 max-w-2xl mx-auto text-center space-y-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+              Every Single Week:
+            </p>
+            <div className="grid grid-cols-3 gap-2 text-xs text-gray-300">
+              <div className="p-2 bg-[#090C12] rounded-xl border border-white/5">
+                ✓ You know what&apos;s shipping
+              </div>
+              <div className="p-2 bg-[#090C12] rounded-xl border border-white/5">
+                ✓ You know why it&apos;s prioritized
+              </div>
+              <div className="p-2 bg-[#090C12] rounded-xl border border-white/5">
+                ✓ You see what it moved
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Indian Work / Case Studies */}
-      <section className="py-20 bg-[#07090E] border-y border-white/5 relative">
+      {/* Industries We Serve (Adapted for Indian Ecosystem) */}
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 mb-3">
-                <Award className="w-3.5 h-3.5" /> Proven Track Record
+                <Building2 className="w-3.5 h-3.5" /> Industry Verticals
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-                Featured Work &amp; Case Studies.
+                Built For Businesses Where Calls &amp; Bookings Can&apos;t Wait.
               </h2>
               <p className="text-sm sm:text-base text-gray-400 mt-2">
-                Real software and digital engines delivered for fast-growing Indian founders and enterprises.
+                Different operations, same core challenge: leads leak when responses are slow. We build systems that convert around the clock.
               </p>
             </div>
-            <Link
-              href="/contact"
-              className="btn-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-white"
-            >
-              <span>Build Your Product With Us</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
 
-          <div className="space-y-8">
-            {caseStudies.map((cs, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {industries.map((ind, i) => (
               <div
-                key={idx}
-                className="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 hover:border-[#E30613]/40 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+                key={i}
+                className="glass-panel rounded-3xl p-7 border border-white/10 hover:border-[#E30613]/40 transition-all flex flex-col justify-between"
               >
-                <div className="lg:col-span-7 space-y-4">
-                  <div className="flex flex-wrap items-center gap-2.5 text-xs">
-                    <span className="font-bold text-[#E30613]">{cs.client}</span>
-                    <span className="text-gray-500">&bull;</span>
-                    <span className="text-gray-400">{cs.city}</span>
-                    <span className="text-gray-500">&bull;</span>
-                    <span className="px-2 py-0.5 rounded bg-white/5 text-gray-300 font-mono text-[10px]">
-                      {cs.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug">
-                    {cs.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                    {cs.desc}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {cs.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2.5 py-1 rounded-md bg-[#131622] border border-white/10 text-[11px] font-mono text-gray-300"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">{ind.title}</h3>
+                  <p className="text-xs font-semibold text-[#FF9933] mb-3">{ind.sub}</p>
+                  <p className="text-xs text-gray-300 leading-relaxed mb-4">{ind.problem}</p>
                 </div>
 
-                <div className="lg:col-span-5 bg-[#0A0D14] p-5 sm:p-6 rounded-2xl border border-white/5 space-y-4">
-                  <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
-                    Verified Outcomes:
-                  </p>
-                  <div className="grid grid-cols-3 gap-3 text-center">
-                    {cs.impact.map((imp, i) => (
-                      <div key={i} className="p-3 rounded-xl bg-[#111520] border border-white/5">
-                        <p className="text-base sm:text-lg font-black text-emerald-400">
-                          {imp.value}
-                        </p>
-                        <p className="text-[10px] text-gray-400 mt-1">{imp.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-2 text-center">
-                    <Link
-                      href="/contact"
-                      className="text-xs text-[#FF9933] hover:underline inline-flex items-center gap-1 font-semibold"
-                    >
-                      <span>Request architecture walkthrough</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-xs font-bold text-emerald-400">{ind.stat}</span>
+                  <Link
+                    href="/contact"
+                    className="text-xs text-gray-400 hover:text-white flex items-center gap-1"
+                  >
+                    <span>{ind.linkText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Ethixweb vs Traditional Indian IT */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E30613] bg-[#E30613]/10 px-3 py-1 rounded-full border border-[#E30613]/20 mb-3">
-              <ShieldCheck className="w-3.5 h-3.5" /> Why Ethixweb India
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-              The Difference Is In The Code.
-            </h2>
-            <p className="text-sm sm:text-base text-gray-400 mt-3">
-              Traditional Indian IT agencies push junior resources on body-shopping models. We provide a compact, elite engineering squad with proven modern stacks.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto glass-panel rounded-3xl border border-white/10 p-2 sm:p-6">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead>
-                <tr className="border-b border-white/10 text-gray-400">
-                  <th className="py-4 px-4 font-semibold">Evaluation Criteria</th>
-                  <th className="py-4 px-4 font-semibold text-gray-500">Traditional Agency</th>
-                  <th className="py-4 px-4 font-semibold text-gray-500">In-House Local Team</th>
-                  <th className="py-4 px-4 font-bold text-white bg-[#E30613]/15 rounded-t-xl border-t border-x border-[#E30613]/40">
-                    Ethixweb Dedicated Pod
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {comparisonPoints.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-white/[0.02]">
-                    <td className="py-4 px-4 font-semibold text-white">{row.feature}</td>
-                    <td className="py-4 px-4 text-gray-400">{row.traditionalAgency}</td>
-                    <td className="py-4 px-4 text-gray-400">{row.inHouseHiring}</td>
-                    <td className="py-4 px-4 text-emerald-300 font-semibold bg-[#E30613]/10 border-x border-[#E30613]/30">
-                      {row.ethixweb}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
@@ -559,42 +525,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Real Reviews: Trustpilot Verified + Indian Founders */}
       <section className="py-20 bg-[#06080D] border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF9933] bg-[#FF9933]/10 px-3 py-1 rounded-full border border-[#FF9933]/20 mb-3">
-              <Star className="w-3.5 h-3.5" /> Founder &amp; Client Feedback
+              <Star className="w-3.5 h-3.5" /> Verified Feedback
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-              Trusted By Leaders Across India &amp; Worldwide.
+              Trusted By Clients Worldwide &amp; In India.
             </h2>
             <p className="text-sm text-gray-400 mt-2">
-              Read how we help founders launch faster, optimize conversions, and eliminate operational bottlenecks.
+              Real feedback from clients who trusted Ethixweb to design, build, and grow their digital operations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {clientReviews.map((rev, idx) => (
               <div
                 key={idx}
-                className="glass-panel p-7 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-[#E30613]/40 transition-colors"
+                className="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-[#E30613]/40 transition-colors"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-amber-400 mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400" />
+                  <div className="flex items-center gap-1 text-amber-400 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                     ))}
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-300 italic leading-relaxed mb-6">
-                    &ldquo;{t.quote}&rdquo;
+                  <p className="text-xs text-gray-300 italic leading-relaxed mb-6">
+                    &ldquo;{rev.quote}&rdquo;
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-sm font-bold text-white">{t.author}</p>
-                  <p className="text-xs text-gray-400">{t.title}</p>
-                  <p className="text-[11px] text-[#E30613] font-semibold mt-0.5">{t.company}</p>
+                <div className="pt-3 border-t border-white/10">
+                  <p className="text-xs font-bold text-white">{rev.author}</p>
+                  <p className="text-[11px] text-gray-400">{rev.source}</p>
+                  <p className="text-[10px] text-[#E30613] font-semibold mt-0.5">{rev.location}</p>
                 </div>
               </div>
             ))}
@@ -602,7 +568,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Lead Generation & Inquiry Form Section */}
+      {/* Lead Generation Form */}
       <section className="py-20 relative" id="inquiry-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -610,15 +576,15 @@ export default function HomePage() {
             <div className="lg:col-span-5 space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#E30613]/40 bg-[#160E12] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#FF2B38]">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Kickstart Your Project</span>
+                <span>Ready For A Sharper Operation?</span>
               </div>
 
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
-                Ready To Scale Your Digital Engine In India?
+                Bring Us The Messy Stack, Missed Leads, Or Slow Site.
               </h2>
 
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                Whether you need an AI WhatsApp booking assistant, a full Next.js rebuild, or a high-converting D2C commerce experience &mdash; submit your brief. Our India Technical Director will review and reply with an architecture outline in under 4 hours.
+                Tired of being account #200 at a big agency? Work with a senior team that knows your business by name and ships code in weeks.
               </p>
 
               <div className="space-y-3 text-xs text-gray-300 pt-2">
@@ -628,28 +594,28 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#E30613]" />
-                  <span>Fixed-scope or dedicated monthly pod pricing in INR (₹)</span>
+                  <span>Transparent INR pricing &amp; full GST input tax credit</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#FF9933]" />
-                  <span>Immediate mutual NDA and IP ownership upon payment</span>
+                  <span>Mutual NDA &amp; 100% intellectual property ownership</span>
                 </div>
               </div>
 
               <div className="pt-4 p-5 rounded-2xl bg-[#0F121C] border border-white/5 space-y-2">
                 <p className="text-xs font-bold text-white flex items-center gap-2">
                   <PhoneCall className="w-4 h-4 text-emerald-400" />
-                  Prefer direct conversation?
+                  Direct Technical Lines (IST):
                 </p>
                 <p className="text-xs text-gray-400">
-                  Call our Bengaluru technical desk at <strong className="text-white">+91 80 4718 9000</strong> or message on WhatsApp for immediate triage.
+                  Call our technical desk at <strong className="text-white">+91 80 4718 9000</strong> or WhatsApp us directly at <strong className="text-emerald-400">+91 98712 34567</strong>.
                 </p>
               </div>
             </div>
 
             {/* Right Form */}
             <div className="lg:col-span-7">
-              <LeadForm source="Home Page - Hero/Footer CTA" />
+              <LeadForm source="Home Page - Deep Analysis CTA" />
             </div>
           </div>
         </div>

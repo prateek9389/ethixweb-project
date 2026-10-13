@@ -32,8 +32,6 @@ body {
   color: #F3F4F6;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
-  selection-background-color: #E30613;
-  selection-color: #ffffff;
 }
 
 ::selection {
@@ -117,4 +115,14 @@ body {
 /* Subtle Indian Tricolor accent line */
 .india-tricolor-line {
   background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+}
+
+/* Ethixweb Signal Trace Glow Animation */
+@keyframes signal-glow-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.98); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.signal-node {
+  animation: signal-glow-pulse 3s infinite ease-in-out;
 }
