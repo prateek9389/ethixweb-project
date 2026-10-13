@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Ethixweb India",
   },
   description:
-    "India's premier digital engineering & AI growth partner. We build WhatsApp AI agents, high-velocity Next.js web apps, ONDC commerce, and full-funnel digital operations for Indian startups and enterprises.",
+    "We run the tech. You run the business. AI automation, websites, web applications, CRM integrations, SEO, ads, maintenance, and digital operations &mdash; built for Indian businesses.",
   keywords: [
     "Ethixweb India",
     "AI automation India",
@@ -62,6 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[#08090C] text-[#F3F4F6] selection:bg-[#E30613] selection:text-white">
