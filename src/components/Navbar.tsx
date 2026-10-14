@@ -13,7 +13,8 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Clock,
-  Sparkles
+  Sparkles,
+  User
 } from "lucide-react";
 
 export default function Navbar() {
@@ -187,11 +188,12 @@ export default function Navbar() {
           {/* Admin Login Icon Button */}
           <Link
             href="/admin/login"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer active:scale-95 group"
-            aria-label="Admin Login Portal"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#E30613]/15 border border-white/10 hover:border-[#E30613]/40 text-gray-300 hover:text-white transition-all cursor-pointer active:scale-95 group"
+            aria-label="Admin Login"
             title="Admin Login Portal"
           >
-            <ShieldCheck className="w-4 h-4 text-gray-400 group-hover:text-[#E30613] transition-colors" />
+            <User className="w-3.5 h-3.5 text-[#E30613] group-hover:scale-110 transition-transform" />
+            <span className="text-[11px] font-semibold text-gray-300 group-hover:text-white">Admin</span>
           </Link>
 
           {/* Theme Toggle Button */}
@@ -224,11 +226,12 @@ export default function Navbar() {
           {/* Mobile Admin Login Icon Button */}
           <Link
             href="/admin/login"
-            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#141722] border border-white/10 text-gray-300 hover:text-[#E30613] transition-colors"
-            aria-label="Admin Login Portal"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#141722] border border-white/10 text-gray-200 hover:text-white transition-colors"
+            aria-label="Admin Login"
             title="Admin Login Portal"
           >
-            <ShieldCheck className="w-4 h-4 text-[#E30613]" />
+            <User className="w-3.5 h-3.5 text-[#E30613]" />
+            <span className="text-[11px] font-bold text-gray-200">Admin</span>
           </Link>
 
           {/* Mobile Theme Toggle Icon Button */}
