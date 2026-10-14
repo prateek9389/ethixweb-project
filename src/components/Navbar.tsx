@@ -26,20 +26,19 @@ export default function Navbar() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const pathname = usePathname();
 
-  // Initialize theme from localStorage or system preference
+  // Initialize theme from html class (set by layout inline script) or localStorage
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("ethix_theme") as "dark" | "light" | null;
-    if (saved) {
-      setTheme(saved);
-      if (saved === "light") {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.classList.add("light");
-      } else {
-        document.documentElement.classList.remove("light");
-        document.documentElement.classList.add("dark");
-      }
+    // Prefer the class already on <html> (set by layout inline script before hydration)
+    const currentClass = document.documentElement.classList.contains("light") ? "light" : "dark";
+    setTheme(currentClass);
+    // Ensure localStorage is in sync
+    if (!localStorage.getItem("ethix_theme")) {
+      localStorage.setItem("ethix_theme", currentClass);
     }
+    // Ensure the correct class is applied
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(currentClass);
   }, []);
 
   const toggleTheme = () => {
