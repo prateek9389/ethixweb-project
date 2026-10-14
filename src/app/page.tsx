@@ -248,23 +248,21 @@ export default function HomePage() {
             {/* CTAs */}
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/contact"
-                className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-all shadow-xl shadow-[#E30613]/30"
+                href="/contact#inquiry-form"
+                className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-all shadow-xl shadow-[#E30613]/30 cursor-pointer"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Start a Project (IST Discovery)</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
-              <a
-                href="https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team!%20I%20would%20like%20to%20discuss%20our%20tech%20operations."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-4 text-sm font-bold text-emerald-400 hover:bg-emerald-500/20 transition-all"
+              <Link
+                href="/our-work"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 px-6 py-4 text-sm font-semibold text-white transition-all"
               >
-                <PhoneCall className="w-4 h-4" />
-                <span>Instant WhatsApp Consult</span>
-              </a>
+                <span>View Case Studies</span>
+                <ArrowRight className="w-4 h-4 text-gray-400" />
+              </Link>
             </div>
 
             {/* Core Values Tagline */}
@@ -608,7 +606,7 @@ export default function HomePage() {
                   Direct Technical Lines (IST):
                 </p>
                 <p className="text-xs text-gray-400">
-                  Call our technical desk at <strong className="text-white">+91 80 4718 9000</strong> or WhatsApp us directly at <strong className="text-emerald-400">+91 98712 34567</strong>.
+                  Call our technical desk at <strong className="text-white">+91 80 4718 9000</strong> or write to us at <strong className="text-emerald-400">india@ethixweb.com</strong>.
                 </p>
               </div>
             </div>

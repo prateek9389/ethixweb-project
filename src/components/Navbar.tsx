@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import BrandLogo from "./BrandLogo";
 import { 
   Menu, 
@@ -25,6 +25,28 @@ export default function Navbar() {
   const [currentTimeIST, setCurrentTimeIST] = useState("12:00 AM");
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleStartProjectClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/contact") {
+      e.preventDefault();
+      const el = document.getElementById("inquiry-form") || document.getElementById("contact-form") || document.getElementById("inquiry-section");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById("inquiry-section") || document.getElementById("inquiry-form");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        router.push("/contact#inquiry-form");
+      }
+    }
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
 
   // Initialize theme from html class (set by layout inline script) or localStorage
   useEffect(() => {
@@ -215,8 +237,9 @@ export default function Navbar() {
 
           {/* "Start a project ↗" Pill Button (Exact as screenshot) */}
           <Link
-            href="/contact"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-white text-black font-semibold px-4.5 py-2 text-xs transition-all duration-200 hover:bg-gray-200 hover:shadow-lg shadow-white/10"
+            href="/contact#inquiry-form"
+            onClick={handleStartProjectClick}
+            className="group inline-flex items-center gap-1.5 rounded-full bg-white text-black font-semibold px-4.5 py-2 text-xs transition-all duration-200 hover:bg-gray-200 hover:shadow-lg shadow-white/10 cursor-pointer"
           >
             <span>Start a project</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -337,8 +360,9 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href="/contact"
-                className="flex items-center justify-center gap-2 rounded-xl bg-white text-black py-3 text-sm font-bold shadow-md hover:bg-gray-200 transition-colors mt-2"
+                href="/contact#inquiry-form"
+                onClick={handleStartProjectClick}
+                className="flex items-center justify-center gap-2 rounded-xl bg-white text-black py-3 text-sm font-bold shadow-md hover:bg-gray-200 transition-colors mt-2 cursor-pointer"
               >
                 <span>Start a project</span>
                 <ArrowUpRight className="w-4 h-4" />

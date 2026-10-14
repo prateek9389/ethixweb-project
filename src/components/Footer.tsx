@@ -175,7 +175,7 @@ export default function Footer() {
             <Link href="/services" className="hover:text-white transition-colors">
               Capabilities
             </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
+            <Link href="/contact#inquiry-form" className="hover:text-white transition-colors">
               Start a Project
             </Link>
             <a

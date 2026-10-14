@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme {
   --color-brand-red: #E30613;
@@ -271,6 +271,34 @@ html.light a.bg-white.text-black,
 html.light .bg-white.text-black {
   background-color: #0D1117 !important;
   color: #FFFFFF !important;
+}
+html.light a.bg-white.text-black:hover,
+html.light .bg-white.text-black:hover {
+  background-color: #1F2937 !important;
+  color: #FFFFFF !important;
+}
+
+/* --- Brand Logo switching: crisp display in dark & light modes --- */
+html.light .logo-dark-swap,
+html.light [data-logo="white"] {
+  display: none !important;
+}
+html.light .logo-light-swap,
+html.light [data-logo="dark"] {
+  display: block !important;
+}
+html.dark .logo-dark-swap,
+html.dark [data-logo="white"] {
+  display: block !important;
+}
+html.dark .logo-light-swap,
+html.dark [data-logo="dark"] {
+  display: none !important;
+}
+
+/* Fallback for any standalone white logo image */
+html.light img[src*="ethixweb-logo.webp"]:not(.logo-dark-swap) {
+  filter: invert(1) brightness(0.12) !important;
 }
 
 /* --- Smooth transition on theme switch --- */

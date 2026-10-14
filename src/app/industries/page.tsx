@@ -146,24 +146,14 @@ export default function IndustriesPage() {
                       </p>
                     </div>
 
-                    <div className="space-y-2">
+                    <div>
                       <Link
-                        href={`/contact?industry=${encodeURIComponent(ind.title)}`}
+                        href={`/contact?industry=${encodeURIComponent(ind.title)}#inquiry-form`}
                         className="btn-primary w-full py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5"
                       >
                         <span>Get Industry Roadmap</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
-
-                      <a
-                        href={`https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team,%20I'd%20like%20to%20inquire%20about%20solutions%20for%20${encodeURIComponent(ind.title)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold flex items-center justify-center gap-1.5 hover:bg-emerald-500/20 transition-colors"
-                      >
-                        <PhoneCall className="w-3.5 h-3.5" />
-                        <span>Instant WhatsApp Triage</span>
-                      </a>
                     </div>
                   </div>
                 </div>

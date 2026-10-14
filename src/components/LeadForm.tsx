@@ -49,7 +49,37 @@ export default function LeadForm({
 
   useEffect(() => {
     setRenderTime(Date.now());
+    if (typeof window !== "undefined") {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const s = params.get("service");
+        const ind = params.get("industry");
+        if (s) {
+          const matched = serviceOptions.find(opt => opt.toLowerCase().includes(s.toLowerCase()));
+          if (matched) setServiceCategory(matched);
+        }
+        if (ind) {
+          setProjectDetails(prev => prev || `Inquiry regarding high-growth tech solutions for the ${ind} industry.`);
+        }
+        if (window.location.hash === "#inquiry-form" || window.location.hash === "#contact-form" || window.location.hash === "#inquiry-section") {
+          setTimeout(() => {
+            const el = document.getElementById("inquiry-form") || document.getElementById("contact-form");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }, 150);
+        }
+      } catch {
+        // Fallback gracefully
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    if (defaultService) {
+      setServiceCategory(defaultService);
+    }
+  }, [defaultService]);
 
   // 22 Capabilities grouped from ethixweb.com
   const serviceOptions = [
@@ -126,7 +156,7 @@ export default function LeadForm({
       if (err instanceof Error) {
         setErrorMessage(err.message);
       } else {
-        setErrorMessage("An unexpected error occurred. Please try again or WhatsApp us.");
+        setErrorMessage("An unexpected error occurred. Please try again or contact us directly.");
       }
     } finally {
       setIsSubmitting(false);
@@ -186,20 +216,10 @@ export default function LeadForm({
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href={`https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team,%20I%20just%20submitted%20project%20inquiry%20Ref:%20${submittedLeadId}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/20 px-5 py-2.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/30 transition-all"
-          >
-            <PhoneCall className="w-4 h-4" />
-            <span>Fast-Track on WhatsApp</span>
-          </a>
-
           <button
             type="button"
             onClick={handleReset}
-            className="w-full sm:w-auto text-xs text-gray-400 hover:text-white px-4 py-2.5 transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-2.5 text-xs font-semibold text-white hover:bg-white/20 transition-all"
           >
             Submit another brief
           </button>
@@ -210,6 +230,7 @@ export default function LeadForm({
 
   return (
     <form
+      id="inquiry-form"
       onSubmit={handleSubmit}
       className={`glass-panel p-6 sm:p-8 md:p-10 rounded-2xl relative shadow-2xl shadow-black/80 ${className}`}
     >
@@ -290,7 +311,7 @@ export default function LeadForm({
           <div>
             <label className="block text-xs font-medium text-gray-300 mb-1.5 flex items-center gap-1.5">
               <PhoneCall className="w-3.5 h-3.5 text-gray-400" />
-              <span>Phone / WhatsApp *</span>
+              <span>Phone Number *</span>
             </label>
             <input
               type="tel"

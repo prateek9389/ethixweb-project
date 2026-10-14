@@ -17,7 +17,7 @@ import LeadForm from "@/components/LeadForm";
 
 export const metadata = {
   title: "Contact & Discovery | Ethixweb India",
-  description: "Connect with Ethixweb's senior technology team. Offices in Bengaluru, Mumbai, Delhi-NCR, and Wyoming. Reach out via WhatsApp, phone, or our project discovery form.",
+  description: "Connect with Ethixweb's senior technology team. Offices in Bengaluru, Mumbai, Delhi-NCR, and Wyoming. Reach out via phone, email, or our project discovery form.",
 };
 
 export default function ContactPage() {
@@ -74,7 +74,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Grid: Form + Info */}
-      <section className="py-6">
+      <section className="py-6" id="inquiry-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Column: Direct Channels & Physical Hubs */}
@@ -87,25 +87,20 @@ export default function ContactPage() {
                 </h3>
 
                 <div className="space-y-4 text-xs">
-                  <a
-                    href="https://wa.me/919871234567?text=Hi%20Ethixweb%20India%20team,%20I%20would%20like%20to%20discuss%20our%20project%20requirements."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#0F1420] border border-emerald-500/30 hover:border-emerald-500/60 transition-all text-gray-200 group cursor-pointer"
-                  >
+                  <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#0F1420] border border-emerald-500/30 text-gray-200">
                     <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                      <MessageSquare className="w-5 h-5" />
+                      <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-bold text-white group-hover:text-emerald-400 transition-colors">
-                        WhatsApp Fast Desk
+                      <p className="font-bold text-white">
+                        Rapid Discovery Desk
                       </p>
                       <p className="text-emerald-400 font-mono text-[11px] mt-0.5">
-                        +91 98712 34567 &middot; Online Now
+                        Guaranteed Sub-4 Hour Response
                       </p>
-                      <p className="text-[10px] text-gray-400 mt-1">Average response &lt; 5 mins during business hours</p>
+                      <p className="text-[10px] text-gray-400 mt-1">Direct assessment by a Senior Solutions Architect</p>
                     </div>
-                  </a>
+                  </div>
 
                   <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#0F1420] border border-white/5 text-gray-200">
                     <div className="w-9 h-9 rounded-xl bg-[#E30613]/20 text-[#E30613] flex items-center justify-center shrink-0">
@@ -167,7 +162,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Full Inquiry Form */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7" id="contact-form">
               <LeadForm source="Contact Page Dedicated Form" />
             </div>
           </div>
