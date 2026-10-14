@@ -33,7 +33,7 @@ export default function AdminLoginPage() {
 
   const handleAutofillDemo = () => {
     setEmail("admin@ethixweb.com");
-    setPassword("EthixAdmin2026!");
+    setPassword("EthixAdmin2026");
     setErrorMessage(null);
     setAutofilled(true);
     setTimeout(() => setAutofilled(false), 3000);
@@ -201,10 +201,10 @@ export default function AdminLoginPage() {
               <div className="flex items-center justify-between bg-black/30 px-2.5 py-1.5 rounded-lg border border-white/5 font-mono text-[11px]">
                 <span className="text-gray-400 truncate mr-2">Password:</span>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[#FF9933] font-semibold select-all">EthixAdmin2026!</span>
+                  <span className="text-[#FF9933] font-semibold select-all">EthixAdmin2026</span>
                   <button
                     type="button"
-                    onClick={() => copyToClipboard("EthixAdmin2026!", "password")}
+                    onClick={() => copyToClipboard("EthixAdmin2026", "password")}
                     className="text-gray-400 hover:text-white p-0.5"
                     title="Copy password"
                   >

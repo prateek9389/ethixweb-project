@@ -11,7 +11,7 @@
 - **Demo Admin Portal:** `/admin`
 - **Demo Admin Credentials:**
   - **Email:** `admin@ethixweb.com`
-  - **Password:** `EthixAdmin2026!`
+  - **Password:** `EthixAdmin2026`
   - *(Convenient 1-click autofill button available on `/admin/login` for rapid evaluation)*
 
 ---
@@ -159,7 +159,7 @@ npm start
 
 ## 🔐 Admin Portal Usage & Features
 Visit `/admin` (or click **Admin Portal** in the Navbar or Footer):
-1. **Credentials:** `admin@ethixweb.com` / `EthixAdmin2026!` (or click the autofill button).
+1. **Credentials:** `admin@ethixweb.com` / `EthixAdmin2026` (or click the autofill button).
 2. **Dashboard Features:**
    - **Real-time Pipeline Statistics:** Total Leads, New, Contacted, In Review, Proposal Sent, and Closed Won.
    - **Status Management:** Change any lead's status dynamically via the dropdown menu.

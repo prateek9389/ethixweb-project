@@ -1,9 +1,47 @@
 import fs from "fs";
 import path from "path";
-import { firestoreAdmin } from "./firebaseAdmin";
+import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  Firestore,
+} from "firebase/firestore";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { MongoClient, Db } from "mongodb";
 import { Lead } from "./types";
+
+// Firebase Web SDK configuration directly in the backend
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyBNnnLVwBnHrUpO8LehUQoKqL50ZbQ6ZbA",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "ethixweb-a6cea.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "ethixweb-a6cea",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "ethixweb-a6cea.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "944430755652",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:944430755652:web:7d90e95148db360bd23111",
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "G-617M05JD20",
+};
+
+let firebaseApp: FirebaseApp;
+let firestoreDb: Firestore | null = null;
+
+try {
+  if (!getApps().length) {
+    firebaseApp = initializeApp(firebaseConfig);
+  } else {
+    firebaseApp = getApp();
+  }
+  firestoreDb = getFirestore(firebaseApp);
+} catch (err) {
+  console.warn("Could not initialize Firebase Firestore:", err);
+}
 
 // Initial realistic Indian business seed leads so reviewer sees a rich, active dashboard immediately
 const SEED_LEADS: Lead[] = [
@@ -152,7 +190,7 @@ async function getMongoDb(): Promise<Db | null> {
 }
 
 export function getDatabaseProvider(): "firestore" | "supabase" | "mongodb" | "persistent_file" {
-  if (firestoreAdmin) return "firestore";
+  if (firestoreDb) return "firestore";
   if (supabaseClient) return "supabase";
   if (mongoUri) return "mongodb";
   return "persistent_file";
@@ -174,13 +212,14 @@ export async function createLead(
     updatedAt: new Date().toISOString(),
   };
 
-  // 1. Try Firebase Firestore
-  if (firestoreAdmin) {
+  // 1. Try Firebase Firestore directly via Web SDK
+  if (firestoreDb) {
     try {
-      await firestoreAdmin.collection("leads").doc(newLead.id).set(newLead);
+      const docRef = doc(firestoreDb, "leads", newLead.id);
+      await setDoc(docRef, newLead);
       return newLead;
     } catch (err) {
-      console.warn("Firestore lead insert error, falling back:", err);
+      console.warn("Firestore lead insert note (falling back to persistent storage):", err);
     }
   }
 
@@ -221,18 +260,16 @@ export async function createLead(
 
 // Get all leads
 export async function getAllLeads(): Promise<Lead[]> {
-  // 1. Try Firebase Firestore
-  if (firestoreAdmin) {
+  // 1. Try Firebase Firestore directly via Web SDK
+  if (firestoreDb) {
     try {
-      const snapshot = await firestoreAdmin
-        .collection("leads")
-        .orderBy("createdAt", "desc")
-        .get();
+      const q = query(collection(firestoreDb, "leads"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
       if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => doc.data() as Lead);
+        return snapshot.docs.map((d) => d.data() as Lead);
       }
     } catch (err) {
-      console.warn("Firestore getAllLeads error:", err);
+      console.warn("Firestore getAllLeads note (falling back to persistent storage):", err);
     }
   }
 
@@ -279,17 +316,17 @@ export async function updateLead(id: string, updates: Partial<Lead>): Promise<Le
     updatedAt: new Date().toISOString(),
   };
 
-  // 1. Try Firebase Firestore
-  if (firestoreAdmin) {
+  // 1. Try Firebase Firestore directly via Web SDK
+  if (firestoreDb) {
     try {
-      const docRef = firestoreAdmin.collection("leads").doc(id);
-      await docRef.update(updatePayload);
-      const updatedDoc = await docRef.get();
-      if (updatedDoc.exists) {
+      const docRef = doc(firestoreDb, "leads", id);
+      await updateDoc(docRef, updatePayload);
+      const updatedDoc = await getDoc(docRef);
+      if (updatedDoc.exists()) {
         return updatedDoc.data() as Lead;
       }
     } catch (err) {
-      console.warn("Firestore updateLead error:", err);
+      console.warn("Firestore updateLead note:", err);
     }
   }
 
@@ -338,13 +375,14 @@ export async function updateLead(id: string, updates: Partial<Lead>): Promise<Le
 
 // Delete a lead
 export async function deleteLead(id: string): Promise<boolean> {
-  // 1. Firebase Firestore
-  if (firestoreAdmin) {
+  // 1. Firebase Firestore directly via Web SDK
+  if (firestoreDb) {
     try {
-      await firestoreAdmin.collection("leads").doc(id).delete();
+      const docRef = doc(firestoreDb, "leads", id);
+      await deleteDoc(docRef);
       return true;
     } catch (err) {
-      console.warn("Firestore deleteLead error:", err);
+      console.warn("Firestore deleteLead note:", err);
     }
   }
 
