@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
     if (!admin) {
       return NextResponse.json(
-        { success: false, error: "Invalid credentials. Use demo: admin@ethixweb.com / EthixAdmin2026" },
+        { success: false, error: "Invalid email or password. Access denied." },
         { status: 401 }
       );
     }

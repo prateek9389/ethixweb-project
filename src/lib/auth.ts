@@ -81,11 +81,12 @@ export function verifyToken(token: string): (AdminUser & { exp: number }) | null
   }
 }
 
-// Verify admin login attempt
+// Verify admin login attempt - strictly authenticated with official credentials
 export function authenticateAdmin(email: string, pass: string): AdminUser | null {
-  const validEmail = email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase();
-  const validPass = pass === ADMIN_PASSWORD || pass === "EthixAdmin2026" || pass === "EthixAdmin2026!";
-  if (validEmail && validPass) {
+  const isEmailMatch = email.trim().toLowerCase() === ADMIN_EMAIL.trim().toLowerCase();
+  const isPassMatch = pass === ADMIN_PASSWORD;
+
+  if (isEmailMatch && isPassMatch) {
     return {
       id: "admin-1",
       email: ADMIN_EMAIL,

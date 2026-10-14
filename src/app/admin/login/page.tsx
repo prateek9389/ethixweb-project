@@ -11,14 +11,10 @@ import {
   ArrowRight, 
   AlertCircle, 
   Loader2, 
-  KeyRound,
   ArrowLeft,
   Eye,
   EyeOff,
-  CheckCircle2,
-  ShieldCheck,
-  Check,
-  Copy
+  ShieldCheck
 } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -28,22 +24,6 @@ export default function AdminLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [autofilled, setAutofilled] = useState(false);
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-
-  const handleAutofillDemo = () => {
-    setEmail("admin@ethixweb.com");
-    setPassword("EthixAdmin2026");
-    setErrorMessage(null);
-    setAutofilled(true);
-    setTimeout(() => setAutofilled(false), 3000);
-  };
-
-  const copyToClipboard = (text: string, field: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => setCopiedField(null), 2000);
-  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,11 +31,13 @@ export default function AdminLoginPage() {
     setErrorMessage(null);
 
     try {
-      // 1. Try Client Firebase Auth if available
+      const cleanEmail = email.trim();
+
+      // 1. Authenticate with Client Firebase Auth SDK directly
       let firebaseIdToken: string | undefined = undefined;
       if (isFirebaseConfigured() && auth) {
         try {
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const userCredential = await signInWithEmailAndPassword(auth, cleanEmail, password);
           firebaseIdToken = await userCredential.user.getIdToken();
         } catch (firebaseErr: unknown) {
           console.warn("Client Firebase Auth note:", firebaseErr);
@@ -67,7 +49,7 @@ export default function AdminLoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
+          email: cleanEmail,
           password,
           firebaseIdToken,
         }),
@@ -76,7 +58,7 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || "Authentication failed. Please verify credentials.");
+        throw new Error(data.error || "Invalid admin credentials. Access denied.");
       }
 
       router.push("/admin");
@@ -85,7 +67,7 @@ export default function AdminLoginPage() {
       if (err instanceof Error) {
         setErrorMessage(err.message);
       } else {
-        setErrorMessage("Login failed. Please check credentials.");
+        setErrorMessage("Invalid admin credentials. Access denied.");
       }
     } finally {
       setIsLoading(false);
@@ -155,70 +137,6 @@ export default function AdminLoginPage() {
             </p>
           </div>
 
-          {/* 1-Click Demo Credentials Card */}
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-[#121624]/90 border border-[#FF9933]/30 space-y-2.5 shadow-lg shadow-black/30">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-[#FF9933] flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
-                <KeyRound className="w-3.5 h-3.5 text-[#FF9933]" />
-                Reviewer Credentials
-              </span>
-              <button
-                type="button"
-                onClick={handleAutofillDemo}
-                className="px-3 py-1 rounded-lg bg-[#FF9933]/20 hover:bg-[#FF9933]/35 active:scale-95 text-[#FF9933] font-bold text-xs transition-all cursor-pointer flex items-center gap-1.5 border border-[#FF9933]/40"
-              >
-                {autofilled ? (
-                  <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400">Filled!</span>
-                  </>
-                ) : (
-                  <span>1-Click Auto Fill</span>
-                )}
-              </button>
-            </div>
-
-            <div className="space-y-1.5 pt-1 text-xs">
-              <div className="flex items-center justify-between bg-black/30 px-2.5 py-1.5 rounded-lg border border-white/5 font-mono text-[11px]">
-                <span className="text-gray-400 truncate mr-2">Email:</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-white font-semibold select-all">admin@ethixweb.com</span>
-                  <button
-                    type="button"
-                    onClick={() => copyToClipboard("admin@ethixweb.com", "email")}
-                    className="text-gray-400 hover:text-white p-0.5"
-                    title="Copy email"
-                  >
-                    {copiedField === "email" ? (
-                      <Check className="w-3 h-3 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between bg-black/30 px-2.5 py-1.5 rounded-lg border border-white/5 font-mono text-[11px]">
-                <span className="text-gray-400 truncate mr-2">Password:</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[#FF9933] font-semibold select-all">EthixAdmin2026</span>
-                  <button
-                    type="button"
-                    onClick={() => copyToClipboard("EthixAdmin2026", "password")}
-                    className="text-gray-400 hover:text-white p-0.5"
-                    title="Copy password"
-                  >
-                    {copiedField === "password" ? (
-                      <Check className="w-3 h-3 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Error Banner */}
           {errorMessage && (
             <div className="p-3.5 rounded-xl bg-red-950/80 border border-red-500/50 flex items-start gap-2.5 text-xs text-red-200 animate-in fade-in duration-200">
@@ -231,7 +149,7 @@ export default function AdminLoginPage() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-gray-300 mb-1.5">
-                Email Address
+                Admin Email
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-gray-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -248,7 +166,7 @@ export default function AdminLoginPage() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-300 mb-1.5">
-                Password
+                Admin Password
               </label>
               <div className="relative">
                 <Lock className="w-4 h-4 text-gray-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -294,7 +212,7 @@ export default function AdminLoginPage() {
           {/* Footer note */}
           <div className="pt-2 border-t border-white/5 text-center">
             <p className="text-[11px] text-gray-400">
-              Authenticated via HTTP-only cookie &amp; Firebase Auth
+              Authenticated via Secure Cookie &amp; Firebase Auth
             </p>
           </div>
         </div>
@@ -305,7 +223,7 @@ export default function AdminLoginPage() {
         <p className="text-[11px] text-gray-400 flex items-center justify-center gap-2">
           <span>🔒 256-bit SSL</span>
           <span>&middot;</span>
-          <span>Zero-Trust Admin Gate</span>
+          <span>Zero-Trust Gate</span>
           <span>&middot;</span>
           <span>Ethixweb India</span>
         </p>
