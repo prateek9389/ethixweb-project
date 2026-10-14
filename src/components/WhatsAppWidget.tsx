@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { MessageSquare, X, Send, Sparkles, CheckCheck } from "lucide-react";
 
 export default function WhatsAppWidget() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [customText, setCustomText] = useState("");
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   const quickPrompts = [
     "Need AI WhatsApp agent for our customer support",

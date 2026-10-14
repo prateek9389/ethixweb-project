@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import BrandLogo from "./BrandLogo";
 import { 
   MapPin, 
@@ -12,6 +15,12 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <footer className="relative bg-[#050608] border-t border-white/10 text-gray-300 pt-16 pb-12 overflow-hidden">
       {/* Subtle background glow */}

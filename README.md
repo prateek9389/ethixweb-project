@@ -6,6 +6,7 @@
 ---
 
 ## 🚀 Live Demo & Repository
+- **GitHub Repository:** [https://github.com/prateek9389/ethixweb-project](https://github.com/prateek9389/ethixweb-project)
 - **Live Deployment:** [Deployable to Vercel in 1-Click](https://vercel.com)
 - **Demo Admin Portal:** `/admin`
 - **Demo Admin Credentials:**
@@ -119,8 +120,8 @@ Ethixweb/
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/your-username/ethixweb-india.git
-cd ethixweb-india
+git clone https://github.com/prateek9389/ethixweb-project.git
+cd ethixweb-project
 npm install
 ```
 
