@@ -126,3 +126,113 @@ body {
 .signal-node {
   animation: signal-glow-pulse 3s infinite ease-in-out;
 }
+
+/* ==============================================================================
+   Light Mode Theme Toggle Support
+   ============================================================================== */
+html.light {
+  color-scheme: light;
+  --background: #F8F9FA;
+  --foreground: #090D1A;
+}
+
+html.light body {
+  background-color: #F8F9FA !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-\[\#07080B\],
+html.light .bg-\[\#07080C\],
+html.light .bg-\[\#08090C\],
+html.light .bg-\[\#050608\],
+html.light .bg-\[\#090A0E\] {
+  background-color: #FAFAFD !important;
+}
+
+html.light .bg-\[\#0D0F16\],
+html.light .bg-\[\#0D1017\],
+html.light .bg-\[\#0A0C11\],
+html.light .bg-\[\#0A0D15\],
+html.light .bg-\[\#0B0D14\],
+html.light .bg-\[\#0B0E17\],
+html.light .bg-\[\#0C0F17\],
+html.light .bg-\[\#101420\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.light .bg-\[\#121622\],
+html.light .bg-\[\#131722\],
+html.light .bg-\[\#141724\],
+html.light .bg-\[\#151924\],
+html.light .bg-\[\#0F1117\],
+html.light .bg-\[\#121520\] {
+  background-color: #F1F4F9 !important;
+}
+
+html.light .bg-\[\#080A10\],
+html.light .bg-\[\#090B10\],
+html.light .bg-\[\#08090D\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+}
+
+html.light .text-white {
+  color: #090D1A !important;
+}
+
+html.light .text-gray-100,
+html.light .text-gray-200,
+html.light .text-gray-300 {
+  color: #1E293B !important;
+}
+
+html.light .text-gray-400 {
+  color: #475569 !important;
+}
+
+html.light .text-gray-500 {
+  color: #64748B !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .divide-white\/5 > * + *,
+html.light .divide-white\/10 > * + * {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  color: #090D1A !important;
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+

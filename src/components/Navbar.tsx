@@ -8,6 +8,7 @@ import {
   Menu, 
   X, 
   Sun, 
+  Moon,
   ChevronDown, 
   ArrowUpRight,
   ShieldCheck,
@@ -20,7 +21,36 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timezoneDropdownOpen, setTimezoneDropdownOpen] = useState(false);
   const [currentTimeIST, setCurrentTimeIST] = useState("12:00 AM");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const pathname = usePathname();
+
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    const saved = localStorage.getItem("ethix_theme") as "dark" | "light" | null;
+    if (saved) {
+      setTheme(saved);
+      if (saved === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+      } else {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
+      }
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    localStorage.setItem("ethix_theme", next);
+    if (next === "light") {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+    }
+  };
 
   // Live IST Clock calculation
   useEffect(() => {
@@ -154,14 +184,29 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Theme Sun Icon Button */}
+          {/* Admin Login Icon Button */}
+          <Link
+            href="/admin/login"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer active:scale-95 group"
+            aria-label="Admin Login Portal"
+            title="Admin Login Portal"
+          >
+            <ShieldCheck className="w-4 h-4 text-gray-400 group-hover:text-[#E30613] transition-colors" />
+          </Link>
+
+          {/* Theme Toggle Button */}
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-            aria-label="Theme toggle"
-            title="Theme: Dark Mode"
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer active:scale-95"
+            aria-label={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+            title={`Current: ${theme === "dark" ? "Dark Mode (click for Light)" : "Light Mode (click for Dark)"}`}
           >
-            <Sun className="w-4 h-4" />
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform duration-300" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-500 hover:-rotate-12 transition-transform duration-300" />
+            )}
           </button>
 
           {/* "Start a project ↗" Pill Button (Exact as screenshot) */}
@@ -174,8 +219,33 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <div className="lg:hidden flex items-center gap-2">
+        {/* Mobile Header Controls */}
+        <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
+          {/* Mobile Admin Login Icon Button */}
+          <Link
+            href="/admin/login"
+            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#141722] border border-white/10 text-gray-300 hover:text-[#E30613] transition-colors"
+            aria-label="Admin Login Portal"
+            title="Admin Login Portal"
+          >
+            <ShieldCheck className="w-4 h-4 text-[#E30613]" />
+          </Link>
+
+          {/* Mobile Theme Toggle Icon Button */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#141722] border border-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
+            aria-label="Theme toggle"
+            title="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-400" />
+            )}
+          </button>
+
           {/* Mobile start project shortcut */}
           <Link
             href="/contact"
@@ -226,6 +296,25 @@ export default function Navbar() {
                 </span>
                 <strong className="font-mono text-white">{currentTimeIST}</strong>
               </div>
+
+              {/* Mobile Theme Toggle */}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="w-full flex items-center justify-between px-4 py-2.5 bg-[#121520] rounded-xl text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  {theme === "dark" ? (
+                    <Sun className="w-4 h-4 text-amber-400" />
+                  ) : (
+                    <Moon className="w-4 h-4 text-indigo-500" />
+                  )}
+                  <span>Appearance:</span>
+                </span>
+                <span className="font-semibold text-white capitalize bg-white/10 px-2.5 py-1 rounded-lg text-[11px]">
+                  {theme === "dark" ? "Dark Theme 🌙" : "Light Theme ☀️"}
+                </span>
+              </button>
 
               <Link
                 href="/admin"
