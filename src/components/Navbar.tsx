@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timezoneDropdownOpen, setTimezoneDropdownOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function Navbar() {
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
+    setMounted(true);
     const saved = localStorage.getItem("ethix_theme") as "dark" | "light" | null;
     if (saved) {
       setTheme(saved);
@@ -154,7 +156,7 @@ export default function Navbar() {
                 IN
               </span>
 
-              <span className="font-mono text-xs text-gray-200">
+              <span className="font-mono text-xs text-gray-200" suppressHydrationWarning>
                 {currentTimeIST}
               </span>
 
@@ -169,7 +171,7 @@ export default function Navbar() {
                   <span>Active &middot; Response under 15 mins</span>
                 </div>
                 <div className="space-y-1 text-gray-300 text-[11px]">
-                  <p className="flex justify-between"><span>New Delhi (IST):</span> <strong className="text-white">{currentTimeIST}</strong></p>
+                  <p className="flex justify-between"><span>New Delhi (IST):</span> <strong className="text-white" suppressHydrationWarning>{currentTimeIST}</strong></p>
                   <p className="flex justify-between"><span>Seattle / WA (PST):</span> <span className="text-gray-400">Active Bridge</span></p>
                 </div>
                 <div className="pt-2 border-t border-white/10">
@@ -201,13 +203,14 @@ export default function Navbar() {
             type="button"
             onClick={toggleTheme}
             className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer active:scale-95"
-            aria-label={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
-            title={`Current: ${theme === "dark" ? "Dark Mode (click for Light)" : "Light Mode (click for Dark)"}`}
+            aria-label="Theme toggle"
+            title={`Current: ${mounted && theme === "light" ? "Light Mode (click for Dark)" : "Dark Mode (click for Light)"}`}
+            suppressHydrationWarning
           >
-            {theme === "dark" ? (
-              <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform duration-300" />
-            ) : (
+            {mounted && theme === "light" ? (
               <Moon className="w-4 h-4 text-indigo-500 hover:-rotate-12 transition-transform duration-300" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform duration-300" />
             )}
           </button>
 
@@ -241,11 +244,12 @@ export default function Navbar() {
             className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#141722] border border-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
             aria-label="Theme toggle"
             title="Toggle theme"
+            suppressHydrationWarning
           >
-            {theme === "dark" ? (
-              <Sun className="w-4 h-4 text-amber-400" />
-            ) : (
+            {mounted && theme === "light" ? (
               <Moon className="w-4 h-4 text-indigo-400" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400" />
             )}
           </button>
 
@@ -297,7 +301,7 @@ export default function Navbar() {
                   <span className="w-2 h-2 rounded-full bg-amber-400" />
                   <span>Time (India IST):</span>
                 </span>
-                <strong className="font-mono text-white">{currentTimeIST}</strong>
+                <strong className="font-mono text-white" suppressHydrationWarning>{currentTimeIST}</strong>
               </div>
 
               {/* Mobile Theme Toggle */}
@@ -305,17 +309,18 @@ export default function Navbar() {
                 type="button"
                 onClick={toggleTheme}
                 className="w-full flex items-center justify-between px-4 py-2.5 bg-[#121520] rounded-xl text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                suppressHydrationWarning
               >
                 <span className="flex items-center gap-2">
-                  {theme === "dark" ? (
-                    <Sun className="w-4 h-4 text-amber-400" />
-                  ) : (
+                  {mounted && theme === "light" ? (
                     <Moon className="w-4 h-4 text-indigo-500" />
+                  ) : (
+                    <Sun className="w-4 h-4 text-amber-400" />
                   )}
                   <span>Appearance:</span>
                 </span>
-                <span className="font-semibold text-white capitalize bg-white/10 px-2.5 py-1 rounded-lg text-[11px]">
-                  {theme === "dark" ? "Dark Theme 🌙" : "Light Theme ☀️"}
+                <span className="font-semibold text-white capitalize bg-white/10 px-2.5 py-1 rounded-lg text-[11px]" suppressHydrationWarning>
+                  {mounted && theme === "light" ? "Light Theme ☀️" : "Dark Theme 🌙"}
                 </span>
               </button>
 
