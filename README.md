@@ -9,10 +9,10 @@
 - **GitHub Repository:** [https://github.com/prateek9389/ethixweb-project](https://github.com/prateek9389/ethixweb-project)
 - **Live Deployment:** [Deployable to Vercel in 1-Click](https://vercel.com)
 - **Demo Admin Portal:** `/admin`
-- **Demo Admin Credentials:**
+- **Official Admin Credentials:**
   - **Email:** `admin@ethixweb.com`
   - **Password:** `EthixAdmin2026`
-  - *(Convenient 1-click autofill button available on `/admin/login` for rapid evaluation)*
+  - *(Strict authentication enforced with secure session cookies)*
 
 ---
 
@@ -158,15 +158,19 @@ npm start
 ---
 
 ## 🔐 Admin Portal Usage & Features
-Visit `/admin` (or click **Admin Portal** in the Navbar or Footer):
-1. **Credentials:** `admin@ethixweb.com` / `EthixAdmin2026` (or click the autofill button).
+Visit `/admin` (or click the **[ 👤 Admin ]** icon in the header):
+1. **Credentials:** `admin@ethixweb.com` / `EthixAdmin2026`.
 2. **Dashboard Features:**
-   - **Real-time Pipeline Statistics:** Total Leads, New, Contacted, In Review, Proposal Sent, and Closed Won.
-   - **Status Management:** Change any lead's status dynamically via the dropdown menu.
-   - **Internal Notes:** Click the eye icon on any lead to open the detail modal and log follow-up notes.
-   - **Instant WhatsApp Action:** Click the WhatsApp button next to any lead to initiate a chat with their provided phone number.
-   - **CSV Export:** Download a complete, timestamped spreadsheet of all captured inquiries with one click.
-   - **Database Provider Badge:** Indicates whether Firebase Firestore, Supabase, or persistent storage is actively connected.
+   - **Real-time Pipeline Valuation:** Live calculation of pipeline value (e.g. ₹1.81 Cr) across all active leads.
+   - **Status Counters & Quick Tabs:** Filter by All, New, Contacted, In Review, Proposal Sent, Closed Won, Disqualified.
+   - **Multi-Dimensional Filters:** Filter by Indian cities (Bengaluru, Mumbai, Delhi-NCR, Hyderabad, Ahmedabad, Chennai, Pune), budget tiers, and real-time text search.
+   - **+ Add Lead Modal:** Directly log offline leads from phone calls, WhatsApp, or networking events.
+   - **Seed Demo Data:** 1-click synchronization of 10 enterprise Indian business leads into Firestore and persistent backend.
+   - **Status & Priority Management:** Instantly update lead status and priority from the table or modal.
+   - **Internal Tech Notes:** Click the eye icon on any lead to review requirements and log shared internal notes.
+   - **Instant WhatsApp & Email Actions:** Click to initiate WhatsApp chats with pre-filled professional greetings.
+   - **CSV Export:** Download a complete, timestamped spreadsheet of all inquiries with one click.
+   - **Database Provider Badge:** Real-time indicator for Firebase Firestore and fallback storage.
 
 ---
 

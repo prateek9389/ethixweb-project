@@ -44,7 +44,7 @@ try {
 }
 
 // Initial realistic Indian business seed leads so reviewer sees a rich, active dashboard immediately
-const SEED_LEADS: Lead[] = [
+export const SEED_LEADS: Lead[] = [
   {
     id: "lead_in_01",
     fullName: "Rohan Malhotra",
@@ -95,7 +95,7 @@ const SEED_LEADS: Lead[] = [
     status: "Contacted",
     priority: "Medium",
     internalNotes: "Initial discovery call completed. Customer wants to reduce mobile checkout abandonment on Tier-2/3 traffic.",
-    createdAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
+    createdAt: new Date(Date.now() - 18 * 3600 * 1000).toISOString(),
     updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
     source: "Website - Services Page",
   },
@@ -113,9 +113,117 @@ const SEED_LEADS: Lead[] = [
     status: "New",
     priority: "Medium",
     internalNotes: "New inquiry received today. Target CAC under ₹1,200 per commercial audit request.",
-    createdAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
-    updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
+    createdAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
     source: "Website - Contact Page",
+  },
+  {
+    id: "lead_in_05",
+    fullName: "Dr. Karthik Subramaniam",
+    email: "karthik@medipulse.in",
+    phone: "+91 94440 91822",
+    companyName: "MediPulse Diagnostics",
+    serviceCategory: "Cloud Architecture & DevOps",
+    budgetRangeINR: "₹15L - ₹30L",
+    timeline: "1 Month",
+    projectDetails: "Zero-downtime migration of patient PACS imaging repository to AWS Mumbai region (ap-south-1) with HIPAA & DISHA healthcare compliance.",
+    city: "Chennai",
+    status: "Closed Won",
+    priority: "High",
+    internalNotes: "Signed 12-month SLA at ₹24L. Architecture approved by medical board. Deployment pipeline active.",
+    createdAt: new Date(Date.now() - 48 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 8 * 3600 * 1000).toISOString(),
+    source: "Website - Case Study",
+  },
+  {
+    id: "lead_in_06",
+    fullName: "Sunita Agarwal",
+    email: "sunita@fabvastra.com",
+    phone: "+91 98290 33145",
+    companyName: "FabVastra Handlooms",
+    serviceCategory: "D2C Commerce & ONDC Integration",
+    budgetRangeINR: "₹5L - ₹15L",
+    timeline: "1 Month",
+    projectDetails: "High-speed D2C storefront with vernacular Hindi/English switch, Shiprocket one-click fulfillment, and Cashfree COD verification to curb RTO.",
+    city: "Other",
+    status: "In Review",
+    priority: "Medium",
+    internalNotes: "RTO reduction strategy demo presented. Reviewing design system draft with Jaipur team.",
+    createdAt: new Date(Date.now() - 28 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
+    source: "Website - Pricing Page",
+  },
+  {
+    id: "lead_in_07",
+    fullName: "Harpreet Singh",
+    email: "harpreet@apexfreight.in",
+    phone: "+91 98102 55901",
+    companyName: "Apex Freight Solutions",
+    serviceCategory: "AI Automation & WhatsApp Agents",
+    budgetRangeINR: "₹30L+",
+    timeline: "< 2 Weeks (Urgent)",
+    projectDetails: "Automated WhatsApp workflow for 450+ fleet drivers: automated GPS check-ins, toll e-receipt upload via OCR, and instant Fastag balance alerts.",
+    city: "Delhi-NCR",
+    status: "Contacted",
+    priority: "High",
+    internalNotes: "Fastag API integration scope shared. Follow-up demo with VP Operations this Friday.",
+    createdAt: new Date(Date.now() - 16 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
+    source: "Website - Hero CTA",
+  },
+  {
+    id: "lead_in_08",
+    fullName: "Devika Nambiar",
+    email: "devika@malabarexports.com",
+    phone: "+91 98470 66219",
+    companyName: "Malabar Organic Exports",
+    serviceCategory: "Web Applications & Portals",
+    budgetRangeINR: "₹5L - ₹15L",
+    timeline: "2-3 Months",
+    projectDetails: "Global spice buyers portal with real-time commodity price tickers, sample request tracking, and multi-currency quotation workflow.",
+    city: "Other",
+    status: "Proposal Sent",
+    priority: "Medium",
+    internalNotes: "Quotation engine spec approved. Sent formal proposal with milestone payments.",
+    createdAt: new Date(Date.now() - 20 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 1 * 3600 * 1000).toISOString(),
+    source: "Website - Contact Page",
+  },
+  {
+    id: "lead_in_09",
+    fullName: "Rajeshwar Reddy",
+    email: "rajeshwar@cybercityspaces.in",
+    phone: "+91 99490 88231",
+    companyName: "CyberCity Coworking",
+    serviceCategory: "Web Applications & Portals",
+    budgetRangeINR: "₹15L - ₹30L",
+    timeline: "1 Month",
+    projectDetails: "Member portal for 8 coworking hubs in Hitec City: meeting room credits, visitor QR check-ins, and automated GST invoice generation.",
+    city: "Hyderabad",
+    status: "New",
+    priority: "High",
+    internalNotes: "Received via Bengaluru tech meetup referral. High priority outreach assigned.",
+    createdAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+    source: "Website - Direct Referral",
+  },
+  {
+    id: "lead_in_10",
+    fullName: "Gaurav Bansal",
+    email: "gaurav@skylineproptech.in",
+    phone: "+91 97640 12890",
+    companyName: "Skyline PropTech",
+    serviceCategory: "UI/UX & Brand System Design",
+    budgetRangeINR: "₹2L - ₹5L",
+    timeline: "Flexible",
+    projectDetails: "Quick logo touch-up and single-page brochure template for real estate broker network.",
+    city: "Pune",
+    status: "Disqualified",
+    priority: "Low",
+    internalNotes: "Scope is purely static graphic design below our enterprise development threshold. Recommended self-serve design tools.",
+    createdAt: new Date(Date.now() - 52 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 10 * 3600 * 1000).toISOString(),
+    source: "Website - Inquiry Form",
   },
 ];
 
@@ -133,7 +241,12 @@ function ensureLocalDataFile(): Lead[] {
       return SEED_LEADS;
     }
     const raw = fs.readFileSync(DATA_FILE, "utf-8");
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      fs.writeFileSync(DATA_FILE, JSON.stringify(SEED_LEADS, null, 2), "utf-8");
+      return SEED_LEADS;
+    }
+    return parsed;
   } catch (err) {
     console.error("Local file fallback error:", err);
     return SEED_LEADS;
@@ -196,19 +309,31 @@ export function getDatabaseProvider(): "firestore" | "supabase" | "mongodb" | "p
   return "persistent_file";
 }
 
-// Save a new lead
+// Save a new lead (supports public contact submissions & admin creation)
 export async function createLead(
-  leadData: Omit<Lead, "id" | "createdAt" | "updatedAt" | "status" | "priority">
+  leadData: Partial<Lead> & Omit<Lead, "id" | "createdAt" | "updatedAt">
 ): Promise<Lead> {
   const newLead: Lead = {
-    ...leadData,
-    id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-    status: "New",
+    id: leadData.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+    fullName: leadData.fullName || "Inquiry",
+    email: leadData.email || "",
+    phone: leadData.phone || "",
+    companyName: leadData.companyName || "Not specified",
+    serviceCategory: leadData.serviceCategory || "General Inquiry",
+    budgetRangeINR: leadData.budgetRangeINR || "₹5L - ₹15L",
+    timeline: leadData.timeline || "1 Month",
+    projectDetails: leadData.projectDetails || "",
+    city: leadData.city || "Bengaluru",
+    source: leadData.source || "Website - Direct",
+    ipAddress: leadData.ipAddress,
+    status: leadData.status || "New",
     priority:
-      leadData.budgetRangeINR === "₹30L+" || leadData.budgetRangeINR === "₹15L - ₹30L"
+      leadData.priority ||
+      (leadData.budgetRangeINR === "₹30L+" || leadData.budgetRangeINR === "₹15L - ₹30L"
         ? "High"
-        : "Medium",
-    createdAt: new Date().toISOString(),
+        : "Medium"),
+    internalNotes: leadData.internalNotes || "",
+    createdAt: leadData.createdAt || new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
 
@@ -256,6 +381,34 @@ export async function createLead(
   currentLeads.unshift(newLead);
   writeLocalData(currentLeads);
   return newLead;
+}
+
+// Seed or Reset the backend database (Firestore and persistent fallback) with rich enterprise leads
+export async function seedDatabase(customLeads?: Lead[]): Promise<{ leads: Lead[]; firestoreCount: number; localCount: number }> {
+  const leadsToSeed = customLeads && customLeads.length > 0 ? customLeads : SEED_LEADS;
+  let firestoreCount = 0;
+
+  // 1. Write to Firestore if connected
+  if (firestoreDb) {
+    for (const lead of leadsToSeed) {
+      try {
+        const docRef = doc(firestoreDb, "leads", lead.id);
+        await setDoc(docRef, lead, { merge: true });
+        firestoreCount++;
+      } catch (innerErr) {
+        console.warn(`Firestore setDoc note for ${lead.id}:`, innerErr);
+      }
+    }
+  }
+
+  // 2. Write to local file fallback
+  writeLocalData(leadsToSeed);
+
+  return {
+    leads: leadsToSeed,
+    firestoreCount,
+    localCount: leadsToSeed.length,
+  };
 }
 
 // Get all leads
