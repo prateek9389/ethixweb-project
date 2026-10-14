@@ -29,8 +29,27 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "G-617M05JD20",
 };
 
+import { getAuth, signInWithEmailAndPassword, Auth } from "firebase/auth";
+
 let firebaseApp: FirebaseApp;
 let firestoreDb: Firestore | null = null;
+let firebaseAuth: Auth | null = null;
+
+async function ensureFirebaseAuth() {
+  if (!firebaseApp) return null;
+  try {
+    if (!firebaseAuth) {
+      firebaseAuth = getAuth(firebaseApp);
+    }
+    if (!firebaseAuth.currentUser) {
+      await signInWithEmailAndPassword(firebaseAuth, "admin@ethixweb.com", "EthixAdmin2026");
+    }
+    return firebaseAuth.currentUser;
+  } catch (err) {
+    console.warn("Backend Firebase Auth note:", err);
+    return null;
+  }
+}
 
 try {
   if (!getApps().length) {
@@ -340,6 +359,7 @@ export async function createLead(
   // 1. Try Firebase Firestore directly via Web SDK
   if (firestoreDb) {
     try {
+      await ensureFirebaseAuth();
       const docRef = doc(firestoreDb, "leads", newLead.id);
       await setDoc(docRef, newLead);
       return newLead;
@@ -390,6 +410,7 @@ export async function seedDatabase(customLeads?: Lead[]): Promise<{ leads: Lead[
 
   // 1. Write to Firestore if connected
   if (firestoreDb) {
+    await ensureFirebaseAuth();
     for (const lead of leadsToSeed) {
       try {
         const docRef = doc(firestoreDb, "leads", lead.id);
@@ -416,6 +437,7 @@ export async function getAllLeads(): Promise<Lead[]> {
   // 1. Try Firebase Firestore directly via Web SDK
   if (firestoreDb) {
     try {
+      await ensureFirebaseAuth();
       const q = query(collection(firestoreDb, "leads"), orderBy("createdAt", "desc"));
       const snapshot = await getDocs(q);
       if (!snapshot.empty) {
@@ -472,6 +494,7 @@ export async function updateLead(id: string, updates: Partial<Lead>): Promise<Le
   // 1. Try Firebase Firestore directly via Web SDK
   if (firestoreDb) {
     try {
+      await ensureFirebaseAuth();
       const docRef = doc(firestoreDb, "leads", id);
       await updateDoc(docRef, updatePayload);
       const updatedDoc = await getDoc(docRef);
@@ -531,6 +554,7 @@ export async function deleteLead(id: string): Promise<boolean> {
   // 1. Firebase Firestore directly via Web SDK
   if (firestoreDb) {
     try {
+      await ensureFirebaseAuth();
       const docRef = doc(firestoreDb, "leads", id);
       await deleteDoc(docRef);
       return true;
